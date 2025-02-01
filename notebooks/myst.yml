@@ -1,0 +1,36 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  title: Welcome
+  description: Jupyter notebooks showcasing the usage of EOPF Sample Zarr Service
+  authors:
+    - name: European Space Agency
+      affiliations:
+        - id: ESA
+          institution: ESA
+          ror: https://ror.org/03wd9za21
+  github: https://github.com/EOPF-Sample-Service/eopf-sample-notebooks
+  banner: static/ESA_logo_2020_Deep.png
+  thumbnail: static/ESA_logo_2020_Deep.png
+  open_access: true
+  license:
+    content: CC-BY-4.0
+    code: Apache-2.0
+  copyright : "2025"  # Copyright year to be placed in the footer
+  toc:
+    - file: README.md
+    - title: Jupyter Notebooks
+      children:
+        - file: template/template.ipynb
+  # bibliography: []
+  subject: earth and related environmental sciences
+site:
+  template: book-theme
+  options:
+     logo: static/ESA_logo_2020_Deep.png
+     logo_text: EOPF Sample Service
+     revision: 2025-02-01
+  nav:
+    - title: Learn More
+      url: https://eopf.copernicus.eu
+  domains: []

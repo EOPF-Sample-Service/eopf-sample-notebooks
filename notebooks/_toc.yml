@@ -1,6 +1,0 @@
-format: jb-book
-root: README
-parts:
-  - caption: First chapter
-    chapters:
-    - file: template/template
