@@ -27,7 +27,9 @@ project:
       children:
         - file: Sentinel-2/SAFE_Zarr_Metadata_Comparison_S2_L2A.ipynb
         - file: Sentinel-2/Sentinel-2_L1C_MSI_Zarr_product_exploration.ipynb
+        - file: Sentinel-2/GDAL_explore_Zarr.ipynb
         - file: Sentinel-2/deforestation_monitoring_zarr.ipynb
+        - file: Sentinel-2/NDVI_based_landslide_mapping.ipynb
         - file: EOPF_Tutorials/Sentinel-1_L1_GRD_product_format_prototype.ipynb
         - file: EOPF_Tutorials/Sentinel-1_L1_SLC_TOPSAR_product_format_prototype.ipynb
         - file: EOPF_Tutorials/Sentinel-1_L1_NRB_product_format_prototype.ipynb
