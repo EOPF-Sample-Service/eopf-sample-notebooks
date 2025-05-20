@@ -1,3 +1,6 @@
 .ipynb_checkpoints
 */_build/*
 venv
+
+# MyST build outputs
+_build

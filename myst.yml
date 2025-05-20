@@ -1,0 +1,15 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: ef30f5b7-7fad-4e40-9e70-44be0c41c6f0
+  # title:
+  # description:
+  # keywords: []
+  # authors: []
+  github: https://github.com/EOPF-Sample-Service/eopf-sample-notebooks
+  # To autogenerate a Table of Contents, run "myst init --write-toc"
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
