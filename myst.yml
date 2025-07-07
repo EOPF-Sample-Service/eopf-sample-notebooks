@@ -26,11 +26,15 @@ project:
     code: Apache-2.0
   copyright: "2025"
   toc:
-    # Main navigation
+    # Welcome tab
     - file: notebooks/README.md
-    - file: notebooks/gallery.md
-      hidden: true
+      title: Welcome
+
+    # Notebooks tab - all notebooks listed together
+    - title: Notebooks
       children:
+        - file: notebooks/Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration.ipynb
+        - file: notebooks/Sentinel-1/Sentinel-1_L2_OCN_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-2/SAFE_Zarr_Metadata_Comparison_S2_L2A.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L1C_MSI_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-2/GDAL_explore_Zarr.ipynb
@@ -38,17 +42,23 @@ project:
         - file: notebooks/Sentinel-2/NDVI_based_landslide_mapping.ipynb
         - file: notebooks/Sentinel-2/parcel_delineation_sentinel.ipynb
         - file: notebooks/Sentinel-3/Regridding_Sentinel_3_SLSTR_LST.ipynb
-        - file: notebooks/xarray_eopf_plugin/introduction_xarray_eopf_plugin.ipynb
-        - file: notebooks/xcube_eopf_plugin/introduction_xcube_eopf_plugin.ipynb
-        - file: notebooks/Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration.ipynb
-        - file: notebooks/Sentinel-1/Sentinel-1_L2_OCN_Zarr_product_exploration.ipynb
         - file: notebooks/EOPF_Tutorials/Sentinel-1_L1_SLC_TOPSAR_product_format_prototype.ipynb
         - file: notebooks/EOPF_Tutorials/Sentinel-3_Patchwork_L1_OLCI_EFR_L2_SLSTR_FPR_SYN_AOD_product_format_prototype.ipynb
+        - file: notebooks/xarray_eopf_plugin/introduction_xarray_eopf_plugin.ipynb
+        - file: notebooks/xcube_eopf_plugin/introduction_xcube_eopf_plugin.ipynb
         - file: notebooks/STAC/STAC_EOPF_ZARR_SENTINEL.ipynb
-    # Gallery categories (visible in navigation)
+
+    # Sentinel Data tab
     - file: notebooks/gallery-sentinel.md
+      title: Sentinel Data
+
+    # Application Topics tab
     - file: notebooks/gallery-topics.md
+      title: Application Topics
+
+    # Tools and Libraries tab
     - file: notebooks/gallery-tools.md
+      title: Tools and Libraries
   subject: earth and related environmental sciences
 
 site:
