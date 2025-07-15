@@ -279,6 +279,8 @@ title: Notebook Gallery
 
 # Notebook Gallery
 
+Don't know how to run the notebooks? Please check the [Welcome page](https://eopf-sample-service.github.io/eopf-sample-notebooks/), where instructions are provided! https://eopf-sample-service.github.io/eopf-sample-notebooks/
+
 ```{gallery-grid}
 :category: all
 :columns: 1 1 2 3
