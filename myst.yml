@@ -32,14 +32,6 @@ project:
       children:
         - file: notebooks/Sentinel-2/SAFE_Zarr_Metadata_Comparison_S2_L2A.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L1C_MSI_Zarr_product_exploration.ipynb
-          children:
-            - type: html
-              value: >-
-                <a class="button" style="display: block; margin: 0 auto; text-align:
-                center" href="https://jupyterhub.user.eopf.eodc.eu/hub/spawn#fancy-forms-config=%7B%22profile%22:%22choose-your-environment%22,%22image%22:%22default-notebooks-image%22,%22image:unlisted_choice%22:%22%22,%22default_url%22:%22unlisted_choice%22,%22default_url:unlisted_choice%22:%22/lab/tree/notebooks/Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration.ipynb%22,%22autoStart%22:%22true%22%7D"
-                target="_blank" rel="noreferrer">
-                  Launch this notebook in JupyterLab
-                </a>
         - file: notebooks/Sentinel-2/GDAL_explore_Zarr.ipynb
         - file: notebooks/Sentinel-2/deforestation_monitoring_zarr.ipynb
         - file: notebooks/Sentinel-2/NDVI_based_landslide_mapping.ipynb
@@ -70,4 +62,9 @@ site:
   actions:
     - title: Learn More
       url: https://eopf.copernicus.eu
+  buttons:
+    - icon: jupyter
+      url: "https://jupyterhub.user.eopf.eodc.eu/hub/spawn#fancy-forms-config=%7B%22profile%22:%22choose-your-environment%22,%22image%22:%22default-notebooks-image%22,%22image:unlisted_choice%22:%22%22,%22default_url%22:%22unlisted_choice%22,%22default_url:unlisted_choice%22:%22/lab/tree/{{ page.file }}%22,%22autoStart%22:%22true%22%7D"
+      tooltip: Open in Jupyter Notebook
+      placement: right
   domains: []
