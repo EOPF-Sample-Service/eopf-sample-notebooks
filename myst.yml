@@ -62,9 +62,4 @@ site:
   actions:
     - title: Learn More
       url: https://eopf.copernicus.eu
-  buttons:
-    - icon: jupyter
-      url: "https://jupyterhub.user.eopf.eodc.eu/hub/spawn#fancy-forms-config=%7B%22profile%22:%22choose-your-environment%22,%22image%22:%22default-notebooks-image%22,%22image:unlisted_choice%22:%22%22,%22default_url%22:%22unlisted_choice%22,%22default_url:unlisted_choice%22:%22/lab/tree/{{ page.file }}%22,%22autoStart%22:%22true%22%7D"
-      tooltip: Open in Jupyter Notebook
-      placement: right
   domains: []
