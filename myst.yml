@@ -14,10 +14,6 @@ project:
           institution: ESA
           ror: https://ror.org/03wd9za21
   github: https://github.com/EOPF-Sample-Service/eopf-sample-notebooks
-  jupyter:
-    binder:
-      repo: EOPF-Sample-Service/eopf-sample-notebooks
-      url: https://binderhub.user.eopf.eodc.eu
   banner: notebooks/static/ESA_footer_banner_transparent.png
   thumbnail: notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
   open_access: true
