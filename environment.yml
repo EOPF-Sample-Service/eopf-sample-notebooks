@@ -6,6 +6,7 @@ dependencies:
   - xarray
   - xarray-eopf>=0.1.1
   - xcube-eopf>=0.1.0
+  - xcube-stac
   - folium
   - graphviz
   - mapclassify
@@ -18,6 +19,7 @@ dependencies:
   - myst-nb-bokeh
   - cartopy
   - gdal
+  - libgdal-jp2openjpeg
   - jupyterlab-myst
   - python-graphviz
   - pystac-client
@@ -35,4 +37,5 @@ dependencies:
   - hvplot
   - bokeh
   - holoviews
+  - openeo>=0.44.0
   - pip
