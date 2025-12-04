@@ -27,7 +27,6 @@ project:
     - file: notebooks/README.md
     - file: notebooks/gallery.md
       children:
-        - file: notebooks/Sentinel-2/Sentinel_2_L1C_UTM_to_HealPix.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_snow_cover_fraction.ipynb
         - file: notebooks/Sentinel-2/SAFE_Zarr_Metadata_Comparison_S2_L2A.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L1C_MSI_Zarr_product_exploration.ipynb
