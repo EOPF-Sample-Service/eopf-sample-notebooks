@@ -65,7 +65,7 @@ project:
   subject: earth and related environmental sciences
 
 site:
-  template: book-theme
+  template: https://github.com/myst-templates/book-theme/archive/2234e910adc8f4607c616920cf2abb212da4d41b.zip
   options:
     logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/main/notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
     logo_text: EOPF Sample Service
