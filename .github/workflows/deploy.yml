@@ -50,7 +50,7 @@ jobs:
       - name: Generate Jupyterhub button
         run: micromamba run -n eopf-zarr python add_jupyterhub_buttons.py
       - name: Execute Jupyter Notebooks and Build HTML Assets
-        run: micromamba run -n eopf-zarr jupyter-book build --html
+        run: micromamba run -n eopf-zarr jupyter-book build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
