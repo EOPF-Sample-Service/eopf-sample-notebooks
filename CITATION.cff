@@ -1,0 +1,71 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: EOPF Sample Notebooks
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - orcid: 'https://orcid.org/0000-0003-3680-381X'
+    given-names: Michele
+    family-names: Claus
+    affiliation: Eurac Research - Institute for Earth Observation
+  - orcid: 'https://orcid.org/0009-0007-0355-7372'
+    affiliation: Eurac Research - Institute for Earth Observation
+    family-names: Dhinakaran
+    given-names: Suriyah
+  - orcid: 'https://orcid.org/0009-0000-9185-7955'
+    family-names: Zvolensky
+    given-names: Juraj
+    affiliation: Eurac Research - Institute for Earth Observation
+  - orcid: 'https://orcid.org/0009-0008-1259-3399'
+    family-names: Adagale
+    given-names: Yuvraj
+    affiliation: Eurac Research - Institute for Earth Observation
+  - orcid: 'https://orcid.org/0000-0002-0049-0690'
+    family-names: Ntokas
+    given-names: Konstantin
+    affiliation: Brockmann Consult
+  - orcid: 'https://orcid.org/0000-0002-1784-2920'
+    family-names: Fouilloux
+    given-names: Anne
+    affiliation: Simula Research Laboratory
+  - orcid: 'https://orcid.org/0000-0002-1500-0156'
+    family-names: Odaka
+    given-names: Tina Erica
+  - orcid: 'https://orcid.org/0000-0002-3394-9664'
+    family-names: Zellner
+    given-names: Peter
+    affiliation: DLR - Deutsches Zentrum für Luft- und Raumfahrt
+  - orcid: 'https://orcid.org/0009-0001-3543-9000'
+    family-names: Irsiegler
+    given-names: Gerald Walter
+    affiliation: EODC -  Earth Observation Data Centre
+  - orcid: 'https://orcid.org/0009-0000-4222-0245'
+    family-names: Mosonyi
+    given-names: Simon
+    affiliation: EODC -  Earth Observation Data Centre
+  - orcid: 'https://orcid.org/0009-0003-0664-1976'
+    family-names: Fomferra
+    given-names: Norman
+    affiliation: Brockmann Consult
+identifiers:
+  - type: swh
+    value: 'swh:1:dir:d7e00fd9f3fcfeec59e9a2329c4c0e7cf2069c46'
+repository-code: >-
+  https://github.com/EOPF-Sample-Service/eopf-sample-notebooks
+url: >-
+  https://eopf-sample-service.github.io/eopf-sample-notebooks/
+abstract: >-
+  Collection of Python notebooks demonstrating the usage of
+  the EOPF-CPM library and the new Sentinel data in Zarr
+  format 
+keywords:
+  - ESA
+  - Copernicus
+  - EOPF
+  - Zarr
+  - Xarray
+license: Apache-2.0

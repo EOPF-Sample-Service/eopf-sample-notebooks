@@ -27,6 +27,7 @@ project:
     - file: notebooks/README.md
     - file: notebooks/gallery.md
       children:
+        - file: notebooks/Sentinel-2/Sentinel-2_snow_cover_fraction.ipynb
         - file: notebooks/Sentinel-2/SAFE_Zarr_Metadata_Comparison_S2_L2A.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L1C_MSI_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-2/GDAL_explore_Zarr.ipynb
@@ -43,6 +44,7 @@ project:
         - file: notebooks/Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L1_SLC_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L2_OCN_Zarr_product_exploration.ipynb
+        - file: notebooks/Sentinel-1/radar_vegetation_index.ipynb
         - file: notebooks/STAC/STAC_EOPF_ZARR_SENTINEL.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_NDSI_Snow_Mapping.ipynb
         - file: notebooks/Dask/Dask_Intro.ipynb
@@ -51,6 +53,10 @@ project:
         - file: notebooks/Sentinel-2/oil_spill_index.ipynb
         - file: notebooks/Sentinel-2/Potato_Field_Crop_Type.ipynb
         - file: notebooks/Sentinel-2/Random_Forest_Land_Cover.ipynb
+        - file: notebooks/Sentinel-2/water_level_timeseries.ipynb
+        - file: notebooks/Sentinel-2/sentinel-2_crop_type_classification_rule-based.ipynb
+        - file: notebooks/Sentinel-2/Sentinel-2_wildfire_mapping.ipynb
+        - file: notebooks/Sentinel-3/GDAL_Sentinel-3-OLCI-Level-1-EFR.ipynb
 
     # Gallery categories (visible in navigation)
     - file: notebooks/gallery-tutorials.md
@@ -60,7 +66,7 @@ project:
   subject: earth and related environmental sciences
 
 site:
-  template: book-theme
+  template: https://github.com/myst-templates/book-theme/archive/2234e910adc8f4607c616920cf2abb212da4d41b.zip
   options:
     logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/main/notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
     logo_text: EOPF Sample Service

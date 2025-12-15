@@ -1,3 +1,5 @@
+[![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/EOPF-Sample-Service/eopf-sample-notebooks)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/EOPF-Sample-Service/eopf-sample-notebooks)
+
 [<img src="./notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png">](https://zarr.eopf.copernicus.eu/)
 
 # EOPF Sentinel Zarr Samples - Sample Notebooks
