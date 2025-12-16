@@ -438,10 +438,10 @@ Notebooks demonstrating the main workflows for accessing and working with the da
 :columns: 1 1 2 3
 ```
 
-## STAC
+## Basic Data Access
 
 ```{gallery-grid}
-:category: stac
+:category: basic
 :columns: 1 1 2 3
 ```
         """
