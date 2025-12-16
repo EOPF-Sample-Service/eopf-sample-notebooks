@@ -43,6 +43,14 @@ authors:
     family-names: Irsiegler
     given-names: Gerald Walter
     affiliation: EODC -  Earth Observation Data Centre
+  - orcid: 'https://orcid.org/0009-0000-4222-0245'
+    family-names: Mosonyi
+    given-names: Simon
+    affiliation: EODC -  Earth Observation Data Centre
+  - orcid: 'https://orcid.org/0009-0003-0664-1976'
+    family-names: Fomferra
+    given-names: Norman
+    affiliation: Brockmann Consult
 identifiers:
   - type: swh
     value: 'swh:1:dir:d7e00fd9f3fcfeec59e9a2329c4c0e7cf2069c46'
