@@ -5,17 +5,17 @@ dependencies:
   - python=3.11
   - xarray
   - xarray-eopf>=0.2.4
-  - xcube-eopf>=0.3.0
+  - xcube-eopf>=0.3.1
   - xcube-stac
   - folium
   - graphviz
   - mapclassify
   - matplotlib=3.10.0
-  - matplotlib-inline=0.1.7
+  - matplotlib-inline
   - bottleneck=1.4.2
   - fsspec
-  - numpy=1.26.4
-  - mystmd
+  - numpy
+  - mystmd>=1.7.0
   - myst-nb-bokeh
   - cartopy
   - gdal
