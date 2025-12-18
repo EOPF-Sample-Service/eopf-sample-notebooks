@@ -62,6 +62,8 @@ project:
         - file: notebooks/Sentinel-3/Sentinel-3_OLCI_L1_EFR_data_access.ipynb
         - file: notebooks/Sentinel-3/Sentinel-3_OLCI_L2_LFR_data_access.ipynb
         - file: notebooks/Sentinel-3/Sentinel-3_SLSTR_L2_LST_data_access.ipynb
+        - file: notebooks/performance/sentinel_performance_zarr_safe_direct.ipynb
+        - file: notebooks/performance/sentinel_performance_zarr_safe_xcube.ipynb
     # Gallery categories (visible in navigation)
     - file: notebooks/gallery-tutorials.md
     - file: notebooks/gallery-sentinel.md
