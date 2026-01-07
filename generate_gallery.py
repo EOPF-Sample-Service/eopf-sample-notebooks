@@ -389,7 +389,7 @@ title: {categories["tools"]["title"]}
 :columns: 1 1 2 3
 ```
 
-## xarray-eopf Plugin
+## xarray-eopf plugin
 
 ```{{gallery-grid}}
 :category: xarray-eopf
