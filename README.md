@@ -25,7 +25,7 @@ Please refer to the [Contributing Guideline](CONTRIBUTING.md)
 
 The material in EOPF Sample Notebooks is licensed for free and open consumption and reuse. All code is served under Apache 2.0. This means you are free to share and adapt this material so long as you give appropriate credit to the original notebook authors and the EOPF Sentinel Zarr Samples project.
 
-The source code for the book is released on GitHub and archived on Software Heritage. This Software Identifier will always resolve to the latest release of the notebooks source:  
+The source code for the notebooks is released on GitHub and archived on Software Heritage. This Software Identifier will always resolve to the latest release of the notebooks source:  
 [![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/EOPF-Sample-Service/eopf-sample-notebooks)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/EOPF-Sample-Service/eopf-sample-notebooks)
 
 Please use the following citation to cite our work (BibTeX):
