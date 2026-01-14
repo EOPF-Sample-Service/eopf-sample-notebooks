@@ -64,6 +64,8 @@ project:
         - file: notebooks/Sentinel-3/Sentinel-3_SLSTR_L2_LST_data_access.ipynb
         - file: notebooks/performance/sentinel_performance_zarr_safe_direct.ipynb
         - file: notebooks/performance/sentinel_performance_zarr_safe_xcube.ipynb
+        - file: notebooks/Sentinel-1/Sentinel-1_Soil_moisture.ipynb
+
     # Gallery categories (visible in navigation)
     - file: notebooks/gallery-tutorials.md
     - file: notebooks/gallery-sentinel.md
