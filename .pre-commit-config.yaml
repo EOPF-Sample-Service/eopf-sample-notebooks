@@ -12,9 +12,18 @@ default_language_version:
   python: python3
 
 ci:
-  autoupdate_schedule: monthly
+    autofix_commit_msg: |
+        [pre-commit.ci] auto fixes from pre-commit.com hooks
 
-exclude: "code_of_conduct.md|rule_of_participation.md"
+        for more information, see https://pre-commit.ci
+    autofix_prs: true
+    autoupdate_branch: ''
+    autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+    autoupdate_schedule: weekly
+    skip: []
+    submodules: false
+
+exclude: "generate_gallery.py"
 
 repos:
   # Autoformat and lint Python code (exclude notebooks from ruff-format)
