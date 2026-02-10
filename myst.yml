@@ -76,7 +76,7 @@ project:
 site:
   template: book-theme
   options:
-    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/main/notebooks/static/EOPF-on-bright-baseline.png
+    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/refs/heads/dev/notebooks/static/EOPF-on-bright-baseline.png
     logo_text: EOPF Sample Service
     style: ./notebooks/static/gallery.css
   actions:
