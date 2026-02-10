@@ -16,7 +16,7 @@ project:
           ror: https://ror.org/03wd9za21
   github: https://github.com/EOPF-Sample-Service/eopf-sample-notebooks
   banner: notebooks/static/ESA_footer_banner_transparent.png
-  thumbnail: notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
+  thumbnail: notebooks/static/EOPF-on-bright-baseline.png
   open_access: true
   license:
     content: CC-BY-4.0
@@ -76,8 +76,7 @@ project:
 site:
   template: book-theme
   options:
-    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/main/notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
-    logo_text: EOPF Sample Service
+    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/refs/heads/dev/notebooks/static/EOPF-on-bright-baseline.png
     style: ./notebooks/static/gallery.css
   actions:
     - title: Learn More

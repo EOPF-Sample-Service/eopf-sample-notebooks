@@ -1,4 +1,4 @@
-[<img src="./notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png">](https://zarr.eopf.copernicus.eu/)
+[<img src="./notebooks/static/EOPF-on-bright-baseline.png">](https://zarr.eopf.copernicus.eu/)
 
 # EOPF Sentinel Zarr Samples - Sample Notebooks
 
