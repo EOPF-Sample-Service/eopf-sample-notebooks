@@ -59,6 +59,7 @@ project:
         - file: notebooks/Sentinel-3/GDAL_Sentinel-3-OLCI-Level-1-EFR.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L2A_data_access.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L1C_data_access.ipynb
+        - file: notebooks/Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo.ipynb
 
     # Gallery categories (visible in navigation)
     - file: notebooks/gallery-tutorials.md
