@@ -390,14 +390,14 @@ title: {categories["tools"]["title"]}
 :columns: 1 1 2 3
 ```
 
-## Xarray-eopf Plugin
+## xarray-eopf plugin
 
 ```{{gallery-grid}}
 :category: xarray-eopf
 :columns: 1 1 2 3
 ```
 
-## XCube
+## xcube-eopf plugin
 
 ```{{gallery-grid}}
 :category: xcube

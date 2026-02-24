@@ -16,7 +16,7 @@ project:
           ror: https://ror.org/03wd9za21
   github: https://github.com/EOPF-Sample-Service/eopf-sample-notebooks
   banner: notebooks/static/ESA_footer_banner_transparent.png
-  thumbnail: notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
+  thumbnail: notebooks/static/EOPF-on-bright-baseline.png
   open_access: true
   license:
     content: CC-BY-4.0
@@ -59,6 +59,12 @@ project:
         - file: notebooks/Sentinel-3/GDAL_Sentinel-3-OLCI-Level-1-EFR.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L2A_data_access.ipynb
         - file: notebooks/Sentinel-2/Sentinel-2_L1C_data_access.ipynb
+        - file: notebooks/Sentinel-3/Sentinel-3_OLCI_L1_EFR_data_access.ipynb
+        - file: notebooks/Sentinel-3/Sentinel-3_OLCI_L2_LFR_data_access.ipynb
+        - file: notebooks/Sentinel-3/Sentinel-3_SLSTR_L2_LST_data_access.ipynb
+        - file: notebooks/performance/sentinel_performance_zarr_safe_direct.ipynb
+        - file: notebooks/performance/sentinel_performance_zarr_safe_xcube.ipynb
+        - file: notebooks/Sentinel-1/Sentinel-1_Soil_moisture.ipynb
         - file: notebooks/Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo.ipynb
 
     # Gallery categories (visible in navigation)
@@ -69,10 +75,10 @@ project:
   subject: earth and related environmental sciences
 
 site:
-  template: https://github.com/myst-templates/book-theme/archive/2234e910adc8f4607c616920cf2abb212da4d41b.zip
+  template: book-theme
   options:
-    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/main/notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
-    logo_text: EOPF Sample Service
+    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/refs/heads/dev/notebooks/static/EOPF-on-bright-baseline.png
+    logo_text: EOPF Sentinel Zarr Samples
     style: ./notebooks/static/gallery.css
   actions:
     - title: Learn More
