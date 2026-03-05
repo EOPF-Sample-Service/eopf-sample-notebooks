@@ -1,0 +1,5 @@
+[deps]
+Rasters = "a3a2b9e3-a471-40c9-b274-f788e487c689"
+SentinelDataSource = "afd1bdb2-e5b9-463c-8ecd-ef9b9458f1b0"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
+YAXArrays = "c21b50f5-aa40-41ea-b809-c0f5e47bfa5c"
