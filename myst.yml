@@ -66,6 +66,7 @@ project:
         - file: notebooks/performance/sentinel_performance_zarr_safe_xcube.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_Soil_moisture.ipynb
         - file: notebooks/Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo.ipynb
+        - file: notebooks/Sentinel-1/Sentinel-1_GCP_Geolocation.ipynb
 
     # Gallery categories (visible in navigation)
     - file: notebooks/gallery-tutorials.md
