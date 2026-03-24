@@ -147,6 +147,16 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+.gallery-tag.tag-dask {
+  background: #f0caaf;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.gallery-tag.tag-basic {
+  background: #f0afdd;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 /* ========================================
    END TAG COLORS
    ======================================== */

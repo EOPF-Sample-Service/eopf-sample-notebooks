@@ -4,7 +4,10 @@ title: Tutorials
 
 # Tutorials
 
-Notebooks demonstrating the main workflows for accessing and working with the data
+<a class="link" href="gallery-tutorials/#dask" ><p style="background-color:white;"><span class="gallery-tag tag-dask">🧮 dask</span></p></a>
+<a class="link" href="gallery-tutorials/#basic-data-access" ><p style="background-color:white;"><span class="gallery-tag tag-basic">👶 basic</span></p></a>
+
+Notebooks demonstrating the main workflows for accessing and processing data
 
 ## Dask
 
@@ -13,7 +16,7 @@ Notebooks demonstrating the main workflows for accessing and working with the da
 :columns: 1 1 2 3
 ```
 
-## STAC
+## Basic Data Access
 
 ```{gallery-grid}
 :category: basic
