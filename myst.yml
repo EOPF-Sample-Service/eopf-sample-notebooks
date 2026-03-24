@@ -21,7 +21,7 @@ project:
   license:
     content: CC-BY-4.0
     code: Apache-2.0
-  copyright: "2025"
+  copyright: "2026"
   toc:
     # Main navigation
     - file: notebooks/README.md
@@ -67,12 +67,13 @@ project:
         - file: notebooks/Sentinel-1/Sentinel-1_Soil_moisture.ipynb
         - file: notebooks/Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo.ipynb
         - file: notebooks/Sentinel-1/GDAL_Sentinel-1_SLC_Burst_Selection.ipynb
+        - file: notebooks/Sentinel-1/GDAL_Sentinel-1_GCP_Geolocation.ipynb
 
     # Gallery categories (visible in navigation)
-    - file: notebooks/gallery-tutorials.md
     - file: notebooks/gallery-sentinel.md
     - file: notebooks/gallery-topics.md
     - file: notebooks/gallery-tools.md
+    - file: notebooks/gallery-tutorials.md
   subject: earth and related environmental sciences
 
 site:
