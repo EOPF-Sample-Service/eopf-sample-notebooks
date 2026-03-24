@@ -4,6 +4,12 @@ title: Application Topics
 
 # Application Topics
 
+<a class="link" href="gallery-topics#land-applications" ><p style="background-color:white;"><span class="gallery-tag tag-land">🌱 land</span></p></a>
+<a class="link" href="gallery-topics#climate-monitoring" ><p style="background-color:white;"><span class="gallery-tag tag-climate-change">🌡️ climate-change</span></p></a>
+<a class="link" href="gallery-topics#marine-applications" ><p style="background-color:white;"><span class="gallery-tag tag-marine">🌊 marine</span></p></a>
+<a class="link" href="gallery-topics#emergency-and-security-applications" ><p style="background-color:white;"><span class="gallery-tag tag-security">🔒 security</span></p></a>
+
+
 Notebooks organized by Earth observation application domains
 
 ## Land Applications
@@ -33,3 +39,4 @@ Notebooks organized by Earth observation application domains
 :category: security
 :columns: 1 1 2 3
 ```
+

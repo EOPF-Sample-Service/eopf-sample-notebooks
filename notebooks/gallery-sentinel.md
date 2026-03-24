@@ -4,6 +4,10 @@ title: Sentinel Data
 
 # Sentinel Data
 
+<a class="link" href="gallery-sentinel#sentinel-1" ><p style="background-color:white;"><span class="gallery-tag tag-sentinel-1">🛰️ sentinel-1</span></p></a>
+<a class="link" href="gallery-sentinel#sentinel-2" ><p style="background-color:white;"><span class="gallery-tag tag-sentinel-2">🛰️ sentinel-2</span></p></a>
+<a class="link" href="gallery-sentinel#sentinel-3" ><p style="background-color:white;"><span class="gallery-tag tag-sentinel-3">🛰️ sentinel-3</span></p></a>
+
 Notebooks showcasing Sentinel mission data processing and analysis
 
 ## Sentinel-1
@@ -26,3 +30,4 @@ Notebooks showcasing Sentinel mission data processing and analysis
 :category: sentinel-3
 :columns: 1 1 2 3
 ```
+
