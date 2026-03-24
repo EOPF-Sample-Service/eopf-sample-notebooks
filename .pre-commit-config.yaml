@@ -32,7 +32,7 @@ repos:
     hooks:
       - id: ruff
         types_or: [python, jupyter]
-        args: ["--show-fixes"]
+        args: ["--fix", "--show-fixes"]
       - id: ruff-format
         types_or: [python] # Exclude jupyter
         exclude: \.ipynb$
