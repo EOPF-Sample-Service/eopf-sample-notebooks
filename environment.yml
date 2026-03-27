@@ -4,7 +4,7 @@ channels:
 dependencies:
   - python=3.11
   - xarray
-  - xarray-eopf>=0.2.4
+  - xarray-eopf>=0.2.7
   - xcube-eopf>=0.3.1
   - xcube-stac
   - folium
