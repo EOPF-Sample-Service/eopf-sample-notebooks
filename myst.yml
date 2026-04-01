@@ -43,8 +43,9 @@ project:
         - file: notebooks/xarray_eopf_plugin/sentinel_2_native.ipynb
         - file: notebooks/xarray_eopf_plugin/sentinel_3_analysis.ipynb
         - file: notebooks/xarray_eopf_plugin/sentinel_3_native.ipynb
-        - file: notebooks/xcube_eopf_plugin/xcube_eopf_sen2.ipynb
-        - file: notebooks/xcube_eopf_plugin/xcube_eopf_sen3.ipynb
+        - file: notebooks/xcube_eopf_plugin/introduction.ipynb
+        - file: notebooks/xcube_eopf_plugin/sentinel_2.ipynb
+        - file: notebooks/xcube_eopf_plugin/sentinel_3.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L1_SLC_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L2_OCN_Zarr_product_exploration.ipynb
