@@ -2,49 +2,42 @@
   "STAC/Data_Access_Tutorial": {
     "title": "Accessing Zarr Data",
     "description": "Explore how to access Data in Zarr format.",
-    "tags": ["xarray", "sentinel-2", "land"],
+    "tags": ["land", "xarray", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "STAC"
   },
   "STAC/STAC_EOPF_ZARR_SENTINEL": {
     "title": "STAC-Based Exploration and Visualization of Sentinel-2 and Sentinel-1 Data",
     "description": "Learn how to access Sentinel-2 and Sentinel-1 images via the EOPF STAC Catalog using pystac-client",
-    "tags": ["stac", "sentinel-1", "land"],
+    "tags": ["land", "stac", "sentinel-1"],
     "has_explicit_tags": true,
     "folder": "STAC"
   },
-  "xarray_eopf_plugin/xarray_eopf_sen3": {
-    "title": "Working with Sentinel-3 in xarray EOPF backend",
-    "description": "Direct access to analysis-ready data cubes",
-    "tags": ["climate-change", "sentinel-3", "xarray-eopf"],
-    "has_explicit_tags": true,
-    "folder": "xarray_eopf_plugin"
-  },
-  "xarray_eopf_plugin/xarray_eopf_sen2": {
-    "title": "Working with Sentinel-2 in xarray EOPF backend",
-    "description": "Direct access to analysis-ready data cubes",
-    "tags": ["land", "sentinel-2", "xarray-eopf"],
+  "xarray_eopf_plugin/introduction": {
+    "title": "Intoduction to the xarray EOPF backend",
+    "description": "",
+    "tags": ["land", "xarray-eopf", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "xarray_eopf_plugin"
   },
   "performance/sentinel_performance_zarr_safe_xcube": {
     "title": "EOPF zarr Performance Comparison - xcube",
     "description": "Compare the performance of the Sentinel EOPF zarr format to the SAFE format using the xcube readers.",
-    "tags": ["performance", "sentinel-2", "xcube"],
+    "tags": ["xcube", "sentinel-2", "performance"],
     "has_explicit_tags": true,
     "folder": "performance"
   },
   "performance/sentinel_performance_zarr_safe_direct": {
     "title": "EOPF zarr Performance Comparison - direct read",
     "description": "Compare the performance of the Sentinel EOPF zarr format to the SAFE format reading the files directly.",
-    "tags": ["performance", "sentinel-2"],
+    "tags": ["sentinel-2", "performance"],
     "has_explicit_tags": true,
     "folder": "performance"
   },
   "Sentinel-2/eopf_openeo_stac_remote": {
     "title": "EOPF Zarr Data Access with openEO and STAC",
     "description": "Learn how to use the EOPF Zarr data through STAC and openEO",
-    "tags": ["stac", "openeo", "sentinel-2", "land"],
+    "tags": ["land", "stac", "openeo", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
@@ -58,14 +51,14 @@
   "Sentinel-2/Random_Forest_Land_Cover": {
     "title": "Random Forest Based Land-Cover Mapping with Sentinel-2",
     "description": "Demonstrate how to perform a basic land cover mapping using random forest and the Sentinel-2 data in EOPF Zarr format",
-    "tags": ["land", "sentinel-2", "xcube"],
+    "tags": ["xcube", "land", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/sentinel-2_crop_type_classification_rule-based": {
     "title": "Sentinel-2 Crop-Type Classification",
     "description": "",
-    "tags": ["xarray", "sentinel-2", "land"],
+    "tags": ["land", "xarray", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
@@ -86,42 +79,42 @@
   "Sentinel-2/parcel_delineation_sentinel": {
     "title": "Parcel delineation using Sentinel-2",
     "description": "Delineating agricultural parcels based on a neural network, using Sentinel-2 input data",
-    "tags": ["xarray", "sentinel-2", "land"],
+    "tags": ["land", "xarray", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/eopf_openeo_stac": {
     "title": "EOPF Zarr Data Access with openEO and STAC",
     "description": "Learn how to use the EOPF Zarr data through STAC and openEO",
-    "tags": ["stac", "openeo", "sentinel-2", "land"],
+    "tags": ["land", "stac", "openeo", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/GDAL_explore_Zarr": {
     "title": "Explore EOPF Zarr Sentinel-2 files using GDAL",
     "description": "Explore how to open, visualise and plot Sentinel-2 L1C MSI EOPF Zarr format",
-    "tags": ["gdal", "sentinel-2", "land"],
+    "tags": ["gdal", "land", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/Sentinel-2_wildfire_mapping": {
     "title": "Wildfire Burn Severity Assessment Using Sentinel-2 L2A Data and dNBR",
     "description": "A hands-on tutorial using EOPF STAC Zarr datasets, Dask and  Xarray to map and quantify burnt areas for the Peneda-Ger\u00eas wildfire event (Portugal, July 2025).",
-    "tags": ["climate-change", "stac", "sentinel-2"],
+    "tags": ["stac", "climate-change", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/oil_spill_index": {
     "title": "OSI - Oil Spill Index",
     "description": "Learn how to use the Oil Spill Index (OSI) to detect oil spills using Sentine-2 data.",
-    "tags": ["marine", "stac", "sentinel 2"],
+    "tags": ["marine", "sentinel 2", "stac"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/Sentinel-2_NDSI_Snow_Mapping": {
     "title": "NDSI based snow mapping with Sentinel-2",
     "description": "Demonstrate how to map snow coverage using the Sentinel-2 data in EOPF Zarr format",
-    "tags": ["climate-change", "sentinel-2", "xcube"],
+    "tags": ["xcube", "climate-change", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
@@ -135,21 +128,21 @@
   "Sentinel-2/Potato_Field_Crop_Type": {
     "title": "NDVI Time-Series Analysis of Potato Fields",
     "description": "A step-by-step guide to extracting and analyzing temporal NDVI profiles from potato fields for crop-type studies.",
-    "tags": ["xarray", "sentinel-2", "land"],
+    "tags": ["land", "xarray", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/SAFE_Zarr_Metadata_Comparison_S2_L2A": {
     "title": "Zarr vs SAFE Metadata",
     "description": "Learn how to extract Metadata from EOPF Zarr, in comparison with SAFE (Standard Archive Format for Europe) using GDAL & Xarray (Sentinel-2 L2A)",
-    "tags": ["gdal", "sentinel-2", "land"],
+    "tags": ["gdal", "land", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/water_level_timeseries": {
     "title": "Surface Water Level Monitoring with Sentinel-2",
     "description": "Timeseries of water covered area at Santa Giustina lake, Italy",
-    "tags": ["climate-change", "xarray", "sentinel-2"],
+    "tags": ["xarray", "climate-change", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
@@ -163,14 +156,14 @@
   "Sentinel-2/Sentinel-2_snow_cover_fraction": {
     "title": "Analysing snow cover in the Alps using Sentinel-2",
     "description": "Learn how to use the EOPF Zarr data to analyse snow cover dynamics in the Alps with Sentinel-2 imagery.",
-    "tags": ["stac", "sentinel-2", "land"],
+    "tags": ["stac", "land", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
   "Sentinel-2/Sentinel-2_L1C_MSI_Zarr_product_exploration": {
     "title": "Sentinel-2 L1C MSI Zarr Product Exploration",
     "description": "Explore how to open, visualise and plot Sentinel-2 L1C MSI EOPF Zarr format",
-    "tags": ["xarray", "sentinel-2", "land"],
+    "tags": ["land", "xarray", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "Sentinel-2"
   },
@@ -184,7 +177,7 @@
   "Sentinel-3/GDAL_Sentinel-3-OLCI-Level-1-EFR": {
     "title": "Open Sentinel-3-OLCI-Level-1-EFR Data with GDAL and eopfzarr",
     "description": "",
-    "tags": ["climate-change", "gdal", "sentinel-3"],
+    "tags": ["climate-change", "sentinel-3", "gdal"],
     "has_explicit_tags": true,
     "folder": "Sentinel-3"
   },
@@ -205,7 +198,7 @@
   "Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo": {
     "title": "Sentinel-3 Multi-Product Demo with GDAL",
     "description": "Comprehensive demonstration of accessing multiple Sentinel-3 product types using GDAL EOPFZARR driver",
-    "tags": ["climate-change", "gdal", "sentinel-3"],
+    "tags": ["climate-change", "sentinel-3", "gdal"],
     "has_explicit_tags": true,
     "folder": "Sentinel-3"
   },
@@ -233,14 +226,14 @@
   "Sentinel-1/GDAL_Sentinel-1_GCP_Geolocation": {
     "title": "Sentinel-1 GRD Geolocation with EOPFZARR Driver",
     "description": "Ground Control Point (GCP) based geolocation for Sentinel-1 GRD products using the EOPFZARR GDAL driver",
-    "tags": ["gdal", "sentinel-1"],
+    "tags": ["sentinel-1", "gdal"],
     "has_explicit_tags": true,
     "folder": "Sentinel-1"
   },
   "Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration": {
     "title": "Sentinel-1 GRD Zarr Product Exploration",
     "description": "Explore how to open, inspect the metadata and visualise Sentinel-1 GRD Zarr format",
-    "tags": ["xarray", "sentinel-1", "land"],
+    "tags": ["land", "xarray", "sentinel-1"],
     "has_explicit_tags": true,
     "folder": "Sentinel-1"
   },
@@ -254,35 +247,42 @@
   "Sentinel-1/Sentinel-1_Soil_moisture": {
     "title": "Sentinel 1 Surface Soil Moisture (SSM)",
     "description": "Learn how to compute surface soil moisture from Sentinel-1 data",
-    "tags": ["xarray", "sentinel-1", "land"],
+    "tags": ["land", "xarray", "sentinel-1"],
     "has_explicit_tags": true,
     "folder": "Sentinel-1"
   },
   "Sentinel-1/Sentinel-1_L1_SLC_Zarr_product_exploration": {
     "title": "Sentinel-1 SLC Zarr Product Exploration",
     "description": "Explore how to open, inspect the metadata and process Sentinel-1 Single Look Complex (SLC) Zarr format",
-    "tags": ["xarray", "sentinel-1", "land"],
+    "tags": ["land", "xarray", "sentinel-1"],
+    "has_explicit_tags": true,
+    "folder": "Sentinel-1"
+  },
+  "Sentinel-1/GDAL_Sentinel-1_SLC_Burst_Selection": {
+    "title": "Sentinel-1 SLC Burst Selection with EOPFZARR GDAL Driver",
+    "description": "Directly access individual bursts from Sentinel-1 SLC products using the BURST open option",
+    "tags": ["sentinel-1", "gdal"],
     "has_explicit_tags": true,
     "folder": "Sentinel-1"
   },
   "Sentinel-1/radar_vegetation_index": {
     "title": "Radar Vegetation Index",
     "description": "Monitor vegetation crop growth using Sentinel-1 GRD data",
-    "tags": ["xarray", "sentinel-1", "land"],
+    "tags": ["land", "xarray", "sentinel-1"],
     "has_explicit_tags": true,
     "folder": "Sentinel-1"
   },
   "xcube_eopf_plugin/xcube_eopf_sen2": {
     "title": "Building Sentinel-2 Data Cubes with xcube EOPF",
     "description": "From Multiple EOPF Zarr Tiles to Analysis-Ready Data Cubes (ARDCs)",
-    "tags": ["land", "sentinel-2", "xcube"],
+    "tags": ["xcube", "land", "sentinel-2"],
     "has_explicit_tags": true,
     "folder": "xcube_eopf_plugin"
   },
   "xcube_eopf_plugin/xcube_eopf_sen3": {
     "title": "Building Sentinel-3 Data Cubes with xcube EOPF",
     "description": "From Multiple EOPF Zarr Tiles to Analysis-Ready Data Cubes (ARDCs)",
-    "tags": ["climate-change", "sentinel-3", "xcube"],
+    "tags": ["xcube", "climate-change", "sentinel-3"],
     "has_explicit_tags": true,
     "folder": "xcube_eopf_plugin"
   }
