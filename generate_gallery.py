@@ -400,8 +400,21 @@ Click on the category to explore the corresponding notebooks!
 
 """)
 
+    def _cards_for_tag(tag):
+        """Return sorted notebook-card HTML strings for notebooks matching a tag."""
+        matched = [
+            (path, meta)
+            for path, meta in notebook_tags.items()
+            if tag in meta.get("tags", [])
+        ]
+        matched.sort(key=lambda x: x[1].get("title", "").lower())
+        return [generate_notebook_card_html(path, meta) for path, meta in matched]
+
     # Generate Sentinel category page
     with open(categories["sentinel"]["file"], "w") as f:
+        s1_cards = wrap_notebook_cards(_cards_for_tag("sentinel-1"))
+        s2_cards = wrap_notebook_cards(_cards_for_tag("sentinel-2"))
+        s3_cards = wrap_notebook_cards(_cards_for_tag("sentinel-3"))
         f.write(f"""---
 title: {categories["sentinel"]["title"]}
 ---
@@ -416,29 +429,24 @@ title: {categories["sentinel"]["title"]}
 
 ## Sentinel-1
 
-```{{gallery-grid}}
-:category: sentinel-1
-:columns: 1 1 2 3
-```
+{s1_cards}
 
 ## Sentinel-2
 
-```{{gallery-grid}}
-:category: sentinel-2
-:columns: 1 1 2 3
-```
+{s2_cards}
 
 ## Sentinel-3
 
-```{{gallery-grid}}
-:category: sentinel-3
-:columns: 1 1 2 3
-```
+{s3_cards}
 
 """)
 
     # Generate Topics category page
     with open(categories["topics"]["file"], "w") as f:
+        land_cards = wrap_notebook_cards(_cards_for_tag("land"))
+        climate_cards = wrap_notebook_cards(_cards_for_tag("climate-change"))
+        marine_cards = wrap_notebook_cards(_cards_for_tag("marine"))
+        security_cards = wrap_notebook_cards(_cards_for_tag("security"))
         f.write(f"""---
 title: {categories["topics"]["title"]}
 ---
@@ -450,41 +458,33 @@ title: {categories["topics"]["title"]}
 <a class="link" href="gallery-topics#marine-applications" ><p style="background-color:white;"><span class="gallery-tag tag-marine">🌊 marine</span></p></a>
 <a class="link" href="gallery-topics#emergency-and-security-applications" ><p style="background-color:white;"><span class="gallery-tag tag-security">🔒 security</span></p></a>
 
-
 {categories["topics"]["description"]}
 
 ## Land Applications
 
-```{{gallery-grid}}
-:category: land
-:columns: 1 1 2 3
-```
+{land_cards}
 
 ## Climate Monitoring
 
-```{{gallery-grid}}
-:category: climate-change
-:columns: 1 1 2 3
-```
+{climate_cards}
 
 ## Marine Applications
 
-```{{gallery-grid}}
-:category: marine
-:columns: 1 1 2 3
-```
+{marine_cards}
 
 ## Emergency and Security Applications
 
-```{{gallery-grid}}
-:category: security
-:columns: 1 1 2 3
-```
+{security_cards}
 
 """)
 
     # Generate Tools category page
     with open(categories["tools"]["file"], "w") as f:
+        xarray_cards = wrap_notebook_cards(_cards_for_tag("xarray"))
+        xarray_eopf_cards = wrap_notebook_cards(_cards_for_tag("xarray-eopf"))
+        xcube_cards = wrap_notebook_cards(_cards_for_tag("xcube"))
+        gdal_cards = wrap_notebook_cards(_cards_for_tag("gdal"))
+        stac_cards = wrap_notebook_cards(_cards_for_tag("stac"))
         f.write(f"""---
 title: {categories["tools"]["title"]}
 ---
@@ -500,43 +500,30 @@ title: {categories["tools"]["title"]}
 
 ## Xarray
 
-```{{gallery-grid}}
-:category: xarray
-:columns: 1 1 2 3
-```
+{xarray_cards}
 
 ## xarray-eopf plugin
 
-```{{gallery-grid}}
-:category: xarray-eopf
-:columns: 1 1 2 3
-```
+{xarray_eopf_cards}
 
 ## xcube-eopf plugin
 
-```{{gallery-grid}}
-:category: xcube
-:columns: 1 1 2 3
-```
+{xcube_cards}
 
 ## GDAL
 
-```{{gallery-grid}}
-:category: gdal
-:columns: 1 1 2 3
-```
+{gdal_cards}
 
 ## STAC
 
-```{{gallery-grid}}
-:category: stac
-:columns: 1 1 2 3
-```
+{stac_cards}
 
 """)
 
     # Generate Tutorials category page
     with open(categories["tutorials"]["file"], "w") as f:
+        dask_cards = wrap_notebook_cards(_cards_for_tag("dask"))
+        basic_cards = wrap_notebook_cards(_cards_for_tag("basic"))
         f.write(f"""---
 title: {categories["tutorials"]["title"]}
 ---
@@ -550,19 +537,13 @@ title: {categories["tutorials"]["title"]}
 
 ## Dask
 
-```{{gallery-grid}}
-:category: dask
-:columns: 1 1 2 3
-```
+{dask_cards}
 
 ## Basic Data Access
 
-```{{gallery-grid}}
-:category: basic
-:columns: 1 1 2 3
-```
+{basic_cards}
 
-        """)
+""")
 
 
 def analyze_notebook_content(notebook_tags):
