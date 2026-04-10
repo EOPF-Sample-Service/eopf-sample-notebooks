@@ -251,6 +251,59 @@ def render_simple_tags(tags, has_explicit_tags=False, max_visible=3):
     return tag_text
 
 
+DEFAULT_THUMBNAIL = "/notebooks/static/EOPF-on-bright-baseline.png"
+
+
+def _normalize_thumbnail(thumbnail):
+    """Normalize a thumbnail path to a root-relative or absolute URL."""
+    if not thumbnail:
+        return DEFAULT_THUMBNAIL
+    # Absolute URLs pass through unchanged
+    if thumbnail.startswith("http://") or thumbnail.startswith("https://"):
+        return thumbnail
+    # Normalize relative paths: strip leading dots/slashes, then prepend /notebooks/
+    thumb = thumbnail.replace("\\", "/")
+    # Handle paths like ../static/x.png or ./static/x.png
+    if "static/" in thumb:
+        return "/notebooks/static/" + thumb.split("static/", 1)[1]
+    # Generic fallback: make root-relative
+    return "/" + thumb.lstrip("./")
+
+
+def generate_notebook_card_html(path, meta):
+    """Generate a DestinE-style notebook-card HTML block for a single notebook."""
+    title = meta.get("title", path.split("/")[-1].replace("-", " ").replace("_", " ").title())
+    subtitle = meta.get("description", "")
+    tags = meta.get("tags", [])
+    thumbnail = _normalize_thumbnail(meta.get("thumbnail", ""))
+
+    tags_html = "".join(f'<span class="tag">{tag}</span>' for tag in tags)
+    data_tags = " ".join(tags)
+    # MyST page URL: leading slash + notebooks/ prefix + path (no .ipynb extension)
+    href = f"/notebooks/{path}"
+
+    return f'''\
+<div class="notebook-card" data-tags="{data_tags}" style="display: flex; align-items: flex-start; border: 1px solid #cddff1; border-radius: 6px; padding: 14px 20px; background-color: #f9fbfe; box-shadow: 1px 1px 4px #dfeaf5;">
+  <div style="width: 100px; height: 100px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #fff; border: 1px solid #e0eaf5; border-radius: 6px; overflow: hidden; margin-right: 32px;">
+    <img src="{thumbnail}" alt="Notebook Thumbnail" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+  </div>
+  <div style="flex: 1;">
+    <strong>{title}</strong><br>
+    {subtitle}
+    <div style="margin: 6px 0;">
+      {tags_html}
+    </div>
+    <a href="{href}" style="text-decoration: none; color: #1d70b8; font-weight: bold;">View Notebook</a>
+  </div>
+</div>'''
+
+
+def wrap_notebook_cards(cards_html):
+    """Wrap a list of notebook-card HTML strings in a flex column container."""
+    joined = "\n".join(cards_html)
+    return f'<div style="display: flex; flex-direction: column; gap: 20px; max-width: 900px;">\n{joined}\n</div>'
+
+
 def generate_gallery_pages(notebook_tags, output_dir="notebooks"):
     """Generate MyST gallery pages with enhanced styling"""
 
