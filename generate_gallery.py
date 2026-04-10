@@ -301,7 +301,7 @@ def generate_notebook_card_html(path, meta):
 def wrap_notebook_cards(cards_html):
     """Wrap a list of notebook-card HTML strings in a flex column container."""
     joined = "\n".join(cards_html)
-    return f'<div style="display: flex; flex-direction: column; gap: 20px; max-width: 900px;">\n{joined}\n</div>'
+    return f'<div style="display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin-bottom: 40px;">\n{joined}\n</div>'
 
 
 def generate_gallery_pages(notebook_tags, output_dir="notebooks"):
