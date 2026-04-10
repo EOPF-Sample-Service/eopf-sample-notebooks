@@ -282,6 +282,7 @@ def generate_notebook_card_html(path, meta):
     # MyST page URL: leading slash + notebooks/ prefix + path (no .ipynb extension)
     href = f"/notebooks/{path}"
 
+    subtitle_html = f"    {subtitle}<br>\n" if subtitle else ""
     return f'''\
 <div class="notebook-card" data-tags="{data_tags}" style="display: flex; align-items: flex-start; border: 1px solid #cddff1; border-radius: 6px; padding: 14px 20px; background-color: #f9fbfe; box-shadow: 1px 1px 4px #dfeaf5;">
   <div style="width: 100px; height: 100px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #fff; border: 1px solid #e0eaf5; border-radius: 6px; overflow: hidden; margin-right: 32px;">
@@ -289,8 +290,7 @@ def generate_notebook_card_html(path, meta):
   </div>
   <div style="flex: 1;">
     <strong>{title}</strong><br>
-    {subtitle}
-    <div style="margin: 6px 0;">
+{subtitle_html}    <div style="margin: 6px 0;">
       {tags_html}
     </div>
     <a href="{href}" style="text-decoration: none; color: #1d70b8; font-weight: bold;">View Notebook</a>
