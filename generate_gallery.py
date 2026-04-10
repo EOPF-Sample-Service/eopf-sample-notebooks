@@ -25,6 +25,7 @@ def extract_notebook_metadata_and_content(notebook_path):
         explicit_subtitle = None
         explicit_authors = []
         explicit_keywords = None
+        explicit_thumbnail = None
 
         # Process cells - only look for YAML frontmatter in first markdown cell
         for cell in nb.cells:
@@ -63,6 +64,8 @@ def extract_notebook_metadata_and_content(notebook_path):
                                     )
                             if "authors" in frontmatter:
                                 explicit_authors = frontmatter["authors"]
+                            if "thumbnail" in frontmatter:
+                                explicit_thumbnail = str(frontmatter["thumbnail"]).strip()
 
                             # Look for tags in frontmatter
                             if "tags" in frontmatter:
@@ -109,6 +112,7 @@ def extract_notebook_metadata_and_content(notebook_path):
             "explicit_subtitle": explicit_subtitle,
             "explicit_authors": explicit_authors,
             "explicit_keywords": explicit_keywords,
+            "explicit_thumbnail": explicit_thumbnail,
         }
 
     except Exception as e:
@@ -122,6 +126,7 @@ def extract_notebook_metadata_and_content(notebook_path):
             "explicit_subtitle": None,
             "explicit_authors": [],
             "explicit_keywords": None,
+            "explicit_thumbnail": None,
         }
 
 
@@ -562,6 +567,7 @@ def analyze_notebooks(root_dir="notebooks"):
                 "title": title,
                 "description": notebook_data["explicit_description"] or "",
                 "tags": tags,
+                "thumbnail": notebook_data["explicit_thumbnail"] or "",
                 "full_path": str(file_path),
                 "folder": (
                     str(file_path.parent.relative_to(root_dir))
@@ -593,6 +599,7 @@ def export_metadata_for_plugin(notebook_tags, output_dir="notebooks"):
             "title": meta["title"],
             "description": meta.get("description", ""),
             "tags": meta["tags"],
+            "thumbnail": meta.get("thumbnail", ""),
             "has_explicit_tags": meta.get("has_explicit_tags", False),
             "folder": meta["folder"],
         }
