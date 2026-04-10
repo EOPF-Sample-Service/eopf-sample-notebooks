@@ -13,7 +13,9 @@
   padding: 14px 20px;
   background-color: #f9fbfe;
   box-shadow: 1px 1px 4px #dfeaf5;
-  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
   text-decoration: none;
   color: inherit;
 }

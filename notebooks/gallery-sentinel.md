@@ -609,4 +609,3 @@ Notebooks showcasing Sentinel mission data processing and analysis
   </div>
 </div>
 </div>
-
