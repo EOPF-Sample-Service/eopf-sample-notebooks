@@ -1,6 +1,41 @@
 /* EOPF Gallery CSS - Static Version */
 /* Edit this file directly to customize colors and styling */
 
+/* ========================================
+   NOTEBOOK CARD (DestinE-style)
+   ======================================== */
+
+.notebook-card {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid #cddff1;
+  border-radius: 6px;
+  padding: 14px 20px;
+  background-color: #f9fbfe;
+  box-shadow: 1px 1px 4px #dfeaf5;
+  transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+}
+
+.notebook-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 115, 230, 0.15);
+  border-color: #7ab8f5;
+}
+
+.notebook-card .tag {
+  display: inline-block;
+  background-color: #e6f0fa;
+  border-radius: 10px;
+  padding: 3px 10px;
+  margin: 2px;
+  font-size: 0.75em;
+}
+
+/* ========================================
+   END NOTEBOOK CARD
+   ======================================== */
+
 /* Main gallery grid styling */
 .gallery-grid .sd-card,
 .notebook-grid .sd-card {
