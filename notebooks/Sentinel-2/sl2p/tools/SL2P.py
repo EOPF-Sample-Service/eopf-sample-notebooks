@@ -45,17 +45,18 @@ def SL2P(sl2p_inp, variableName, imageCollectionName, method, outPath=None):
 def makeModel(algorithm, imageCollectionName, variableName, method):
     if method == "SL2P":
         collectionOptions = dictionariesSL2P.make_collection_options(algorithm)
-        networkOptions = dictionariesSL2P.make_net_options()
+        # networkOptions = dictionariesSL2P.make_net_options()
     elif method == "SL2PCCRS":
         collectionOptions = dictionariesSL2P.make_collection_options_CCRS(algorithm)
-        networkOptions = (
-            dictionariesSL2P.make_net_options_CCRS()
-        )  # collectionOptions is a dictionary like: S2_SR': {"name": 'S2_SR', "description": 'Sentinel 2A',
+        # networkOptions = (
+        #    dictionariesSL2P.make_net_options_CCRS()
+        # )
+        # # collectionOptions is a dictionary like: S2_SR': {"name": 'S2_SR', "description": 'Sentinel 2A',
 
     colOptions = collectionOptions[
         imageCollectionName
     ]  # LA RIGA INCRIMINATA #colOptions is a dictionary with only the lines pertaining to the imageCollectionName
-    netOptions = networkOptions[variableName][imageCollectionName]
+    # netOptions = networkOptions[variableName][imageCollectionName]
     """
     Example of colOptions ----        
     'S2_SR': {
@@ -156,7 +157,9 @@ def prepare_sl2p_inp(
         if ang_name not in ds:
             continue
         arr = ds[ang_name].values
-        arr_interp = read_sentinel2_safe_image.interpolate_angle_grid(arr, target_shape)
+        arr_interp = read_sentinel2_safe_image.interpolate_angle_grid(  # noqa: F821
+            arr, target_shape
+        )
         ds[ang_name] = xr.DataArray(arr_interp, dims=dims)
 
     # ---- (2) Relative azimuth
@@ -178,7 +181,7 @@ def prepare_sl2p_inp(
             if to_10m and (arr.shape != (ref_h, ref_w)):
                 factor_y = ref_h / arr.shape[0]
                 factor_x = ref_w / arr.shape[1]
-                arr = read_sentinel2_safe_image.resample_image(
+                arr = read_sentinel2_safe_image.resample_image(  # noqa: F821
                     arr, (factor_y, factor_x), interpolation="nearest"
                 )
                 if arr.shape != (ref_h, ref_w):
@@ -373,7 +376,7 @@ def SL2PCCRS(samples_array, variableName, imageCollectionName, tile, method):
     from tools import SL2PV1 as algorithm
 
     # Generate collection options specific to the SL2PV1 algorithm e.g., "Collection_SL2P": fc.s2_createFeatureCollection_estimates() with fc = algorithm
-    collectionOptions = dictionariesSL2P.make_collection_options(algorithm)
+    # collectionOptions = dictionariesSL2P.make_collection_options(algorithm)
 
     partition_array = make_partition(
         tile, (samples_array.shape[1], samples_array.shape[2])
