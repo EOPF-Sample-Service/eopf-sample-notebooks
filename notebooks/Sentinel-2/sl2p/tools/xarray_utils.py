@@ -20,22 +20,22 @@ import numpy as np
 import rasterio
 from rasterio.transform import Affine
 from scipy import ndimage
-import numpy as np
-import rasterio
 from rasterio.io import MemoryFile
 from rasterio.mask import mask as rio_mask
 from rasterio.warp import transform_geom
-from rasterio.transform import Affine
 import fiona
 
 try:  # pragma: no cover - optional dependency
     import xarray as xr  # type: ignore
+
     HAS_XARRAY = True
 except ImportError:  # pragma: no cover - fallback stub
     HAS_XARRAY = False
 
     class DataArray:
-        def __init__(self, data, dims: Sequence[str], coords=None, attrs=None, name=None):
+        def __init__(
+            self, data, dims: Sequence[str], coords=None, attrs=None, name=None
+        ):
             self.data = np.asarray(data)
             self.dims = tuple(dims)
             self.coords = coords or {}
@@ -51,18 +51,36 @@ except ImportError:  # pragma: no cover - fallback stub
             return self.data.shape
 
         def astype(self, dtype, copy: bool = True):
-            return DataArray(self.data.astype(dtype, copy=copy), dims=self.dims, coords=self.coords, attrs=self.attrs, name=self.name)
+            return DataArray(
+                self.data.astype(dtype, copy=copy),
+                dims=self.dims,
+                coords=self.coords,
+                attrs=self.attrs,
+                name=self.name,
+            )
 
         # Minimal arithmetic to behave like numpy arrays
         def _binop(self, other, op):
             other_arr = other.data if isinstance(other, DataArray) else other
-            return DataArray(op(self.data, other_arr), dims=self.dims, coords=self.coords, attrs=self.attrs, name=self.name)
+            return DataArray(
+                op(self.data, other_arr),
+                dims=self.dims,
+                coords=self.coords,
+                attrs=self.attrs,
+                name=self.name,
+            )
 
         def __sub__(self, other):
             return self._binop(other, np.subtract)
 
         def __rsub__(self, other):
-            return DataArray(np.subtract(other, self.data), dims=self.dims, coords=self.coords, attrs=self.attrs, name=self.name)
+            return DataArray(
+                np.subtract(other, self.data),
+                dims=self.dims,
+                coords=self.coords,
+                attrs=self.attrs,
+                name=self.name,
+            )
 
         def __add__(self, other):
             return self._binop(other, np.add)
@@ -80,13 +98,21 @@ except ImportError:  # pragma: no cover - fallback stub
             return self._binop(other, np.divide)
 
         def __abs__(self):
-            return DataArray(np.abs(self.data), dims=self.dims, coords=self.coords, attrs=self.attrs, name=self.name)
+            return DataArray(
+                np.abs(self.data),
+                dims=self.dims,
+                coords=self.coords,
+                attrs=self.attrs,
+                name=self.name,
+            )
 
         def __array__(self, dtype=None):
             return np.asarray(self.data, dtype=dtype)
 
     class Dataset:
-        def __init__(self, data_vars: Dict[str, DataArray] | None = None, coords=None, attrs=None):
+        def __init__(
+            self, data_vars: Dict[str, DataArray] | None = None, coords=None, attrs=None
+        ):
             self.data_vars = data_vars or {}
             self.coords = coords or {}
             self.attrs = attrs or {}
@@ -136,18 +162,21 @@ def dict_to_dataset(s2_dict: Dict, dims: Tuple[str, str] = ("y", "x")):
             continue
         arr = np.asarray(array)
         # Choose dims/coords per variable to avoid conflicts
-        if prof_h is not None and prof_w is not None and arr.shape[:2] == (prof_h, prof_w):
+        if (
+            prof_h is not None
+            and prof_w is not None
+            and arr.shape[:2] == (prof_h, prof_w)
+        ):
             var_dims = dims
         else:
             var_dims = (f"{dims[0]}_{arr.shape[0]}", f"{dims[1]}_{arr.shape[1]}")
         arr_coords = _coords_from_shape(arr.shape[:2], var_dims)
         data_vars[name] = xr.DataArray(arr, dims=var_dims, coords=arr_coords)
-        
 
     ds = xr.Dataset(data_vars)
     print("***********************************************")
     print("***********************************************")
-    print(type(ds)) 
+    print(type(ds))
     ds.attrs["profile"] = profile
     return ds
 
@@ -178,7 +207,9 @@ def stack_dataset(ds, band_names: Iterable[str] | None = None):
     return stack, names, dims
 
 
-def clip_dataset(ds, aoi_path: str, crop: bool = True, all_touched: bool = False, nodata=np.nan):
+def clip_dataset(
+    ds, aoi_path: str, crop: bool = True, all_touched: bool = False, nodata=np.nan
+):
     """Clip a Dataset to an AOI shapefile using rasterio.mask."""
     profile = dict(ds.attrs.get("profile", {}))
     if not profile:
@@ -198,19 +229,25 @@ def clip_dataset(ds, aoi_path: str, crop: bool = True, all_touched: bool = False
         stack_dtype = str(stack_dtype)
 
     mem_profile = profile.copy()
-    mem_profile.update({
-        "count": stack.shape[0],
-        "dtype": stack_dtype,
-    })
+    mem_profile.update(
+        {
+            "count": stack.shape[0],
+            "dtype": stack_dtype,
+        }
+    )
 
     with MemoryFile() as memfile:
         with memfile.open(**mem_profile) as src:
             src.write(stack)
             dst_crs = src.crs
-            geoms_dst = [
-                transform_geom(shp_crs, dst_crs.to_string(), g, precision=6)
-                for g in shapes
-            ] if shp_crs and dst_crs else shapes
+            geoms_dst = (
+                [
+                    transform_geom(shp_crs, dst_crs.to_string(), g, precision=6)
+                    for g in shapes
+                ]
+                if shp_crs and dst_crs
+                else shapes
+            )
 
             out_img, out_transform = rio_mask(
                 src,
@@ -262,7 +299,12 @@ def coords_from_template(template, profile=None):
                 except TypeError:
                     dims = None
             if dims:
-                coords = {d: getattr(getattr(template, "coords", {}), "get", lambda *_: None)(d) for d in dims}
+                coords = {
+                    d: getattr(getattr(template, "coords", {}), "get", lambda *_: None)(
+                        d
+                    )
+                    for d in dims
+                }
     if dims is None:
         dims = ("y", "x")
     if coords is None:
@@ -294,14 +336,18 @@ def varmap_to_dataset(varmap_dict: Dict[str, ArrayLike], template=None, profile=
     return ds
 
 
-def write_varmap_geotiff(varmap, output_path: str, profile: Dict, band_order: Sequence[str]):
+def write_varmap_geotiff(
+    varmap, output_path: str, profile: Dict, band_order: Sequence[str]
+):
     """Write a varmap Dataset/dict to GeoTIFF following the provided band order."""
     profile = dict(profile)
-    profile.update({
-        "count": len(band_order),
-        "dtype": "float32",
-        "driver": "GTiff",
-    })
+    profile.update(
+        {
+            "count": len(band_order),
+            "dtype": "float32",
+            "driver": "GTiff",
+        }
+    )
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     def _get_band(data, name):
@@ -318,7 +364,6 @@ def write_varmap_geotiff(varmap, output_path: str, profile: Dict, band_order: Se
     return output_path
 
 
-
 def parse_date_from_name(path: str) -> str:
     m = re.search(r"MSIL2A_(\d{8})", os.path.basename(path))
     return m.group(1) if m else "00000000"
@@ -327,6 +372,7 @@ def parse_date_from_name(path: str) -> str:
 def parse_baseline_from_name(path: str) -> int:
     m = re.search(r"_N(\d{4})", os.path.basename(path))
     return int(m.group(1)[1:2]) if m else 5
+
 
 def ensure_angle_cosines(ds: xr.Dataset) -> xr.Dataset:
     if "cosSZA" not in ds and "SZA" in ds:
@@ -359,13 +405,17 @@ def _infer_transform_from_coords(ds: xr.Dataset, ydim: str, xdim: str):
         return None
 
     # x/y coordinates are pixel centers; convert to upper-left pixel corner.
-    return Affine.translation(float(x[0]) - dx / 2.0, float(y[0]) - dy / 2.0) * Affine.scale(dx, dy)
+    return Affine.translation(
+        float(x[0]) - dx / 2.0, float(y[0]) - dy / 2.0
+    ) * Affine.scale(dx, dy)
 
 
 def _infer_crs(ds: xr.Dataset):
     if "spatial_ref" in ds:
         spatial_ref_attrs = getattr(ds["spatial_ref"], "attrs", {})
-        crs_wkt = spatial_ref_attrs.get("crs_wkt") or spatial_ref_attrs.get("spatial_ref")
+        crs_wkt = spatial_ref_attrs.get("crs_wkt") or spatial_ref_attrs.get(
+            "spatial_ref"
+        )
         if crs_wkt:
             return crs_wkt
         epsg = spatial_ref_attrs.get("epsg_code") or spatial_ref_attrs.get("epsg")
@@ -391,17 +441,22 @@ def infer_profile(ds: xr.Dataset, ref_band: str, required_inputs: list) -> dict:
     if transform is None:
         transform = _infer_transform_from_coords(ds, ydim, xdim)
     if transform is None:
-        raise ValueError("Unable to infer raster transform from profile or x/y coordinates.")
+        raise ValueError(
+            "Unable to infer raster transform from profile or x/y coordinates."
+        )
     profile["transform"] = transform
 
     profile.setdefault("crs", profile.get("crs") or _infer_crs(ds))
     if profile["crs"] is None:
-        raise ValueError("Unable to infer CRS from profile, spatial_ref, or dataset attributes.")
+        raise ValueError(
+            "Unable to infer CRS from profile, spatial_ref, or dataset attributes."
+        )
     profile.setdefault("driver", "GTiff")
     profile.setdefault("dtype", "float32")
     profile.setdefault("count", len(required_inputs))
     profile.setdefault("nodata", np.nan)
     return profile
+
 
 def clip_cube_to_aoi(ds: xr.Dataset, ref_band: str, aoi_path: str, required_inputs):
     """Clip an already aligned xarray cube using the raster profile inferred from the reference band."""
@@ -422,7 +477,9 @@ def _resample_to_ref(arr: np.ndarray, target_shape: Tuple[int, int]) -> np.ndarr
     return ndimage.zoom(arr, (fy, fx), order=0)
 
 
-def build_sl2p_input(ds: xr.Dataset, net_opts: dict, PRESCALED_INPUT) -> Tuple[np.ndarray, Tuple[str, str]]:
+def build_sl2p_input(
+    ds: xr.Dataset, net_opts: dict, PRESCALED_INPUT
+) -> Tuple[np.ndarray, Tuple[str, str]]:
     missing = [b for b in net_opts["inputBands"] if b not in ds]
     if missing:
         raise ValueError(f"Dataset missing required variables: {missing}")
@@ -444,7 +501,9 @@ def build_sl2p_input(ds: xr.Dataset, net_opts: dict, PRESCALED_INPUT) -> Tuple[n
         if PRESCALED_INPUT:
             scaled = arr  # reflectance already applied in preprocessing
         else:
-            scaled = (arr + net_opts["inputOffset"][idx]) * net_opts["inputScaling"][idx]
+            scaled = (arr + net_opts["inputOffset"][idx]) * net_opts["inputScaling"][
+                idx
+            ]
         if isinstance(name, str) and name.startswith("B"):
             scaled[scaled < 0] = np.nan
         stack.append(scaled)
