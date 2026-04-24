@@ -509,4 +509,3 @@ Notebooks organized by Earth observation application domains
   </div>
 </div>
 </div>
-
