@@ -331,12 +331,10 @@ def apply_net(
     networkOptions = dictionariesSL2P.make_net_options_CCRS()
     collectionOptions = dictionariesSL2P.make_collection_options_CCRS(algorithm)
 
-    netOptions = networkOptions[variableName][
-        imageCollectionName
-    ]  # These are the network specific option (scaling, offset, column and band names, etc.)
-    colOptions = collectionOptions[
-        imageCollectionName
-    ]  # These are the collection specific options, specifically calling the different NN weights and biases)
+    # Network specific options (scaling, offset, column and band names, etc.)
+    netOptions = networkOptions[variableName][imageCollectionName]
+    # Collection specific options (NN weights, biases, etc.)
+    colOptions = collectionOptions[imageCollectionName]
 
     # prepare SL2P networks
     SL2P, errorsSL2P = makeModel_CCRS(
