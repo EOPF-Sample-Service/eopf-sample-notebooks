@@ -25,6 +25,7 @@ def extract_notebook_metadata_and_content(notebook_path):
         explicit_subtitle = None
         explicit_authors = []
         explicit_keywords = None
+        explicit_thumbnail = None
 
         # Process cells - only look for YAML frontmatter in first markdown cell
         for cell in nb.cells:
@@ -63,6 +64,8 @@ def extract_notebook_metadata_and_content(notebook_path):
                                     )
                             if "authors" in frontmatter:
                                 explicit_authors = frontmatter["authors"]
+                            if "thumbnail" in frontmatter:
+                                explicit_thumbnail = str(frontmatter["thumbnail"]).strip()
 
                             # Look for tags in frontmatter
                             if "tags" in frontmatter:
@@ -109,6 +112,7 @@ def extract_notebook_metadata_and_content(notebook_path):
             "explicit_subtitle": explicit_subtitle,
             "explicit_authors": explicit_authors,
             "explicit_keywords": explicit_keywords,
+            "explicit_thumbnail": explicit_thumbnail,
         }
 
     except Exception as e:
@@ -122,6 +126,7 @@ def extract_notebook_metadata_and_content(notebook_path):
             "explicit_subtitle": None,
             "explicit_authors": [],
             "explicit_keywords": None,
+            "explicit_thumbnail": None,
         }
 
 
@@ -246,6 +251,59 @@ def render_simple_tags(tags, has_explicit_tags=False, max_visible=3):
     return tag_text
 
 
+DEFAULT_THUMBNAIL = "/notebooks/static/EOPF-on-bright-baseline.png"
+
+
+def _normalize_thumbnail(thumbnail):
+    """Normalize a thumbnail path to a root-relative or absolute URL."""
+    if not thumbnail:
+        return DEFAULT_THUMBNAIL
+    # Absolute URLs pass through unchanged
+    if thumbnail.startswith("http://") or thumbnail.startswith("https://"):
+        return thumbnail
+    # Normalize relative paths: strip leading dots/slashes, then prepend /notebooks/
+    thumb = thumbnail.replace("\\", "/")
+    # Handle paths like ../static/x.png or ./static/x.png
+    if "static/" in thumb:
+        return "/notebooks/static/" + thumb.split("static/", 1)[1]
+    # Generic fallback: make root-relative
+    return "/" + thumb.lstrip("./")
+
+
+def generate_notebook_card_html(path, meta):
+    """Generate a DestinE-style notebook-card HTML block for a single notebook."""
+    title = meta.get("title", path.split("/")[-1].replace("-", " ").replace("_", " ").title())
+    subtitle = meta.get("description", "")
+    tags = meta.get("tags", [])
+    thumbnail = _normalize_thumbnail(meta.get("thumbnail", ""))
+
+    tags_html = "".join(f'<span class="tag">{tag}</span>' for tag in tags)
+    data_tags = " ".join(tags)
+    # MyST page URL: leading slash + notebooks/ prefix + path (no .ipynb extension)
+    href = f"/notebooks/{path}"
+
+    subtitle_html = f"    {subtitle}<br>\n" if subtitle else ""
+    return f'''\
+<div class="notebook-card" data-tags="{data_tags}" style="display: flex; align-items: flex-start; border: 1px solid #cddff1; border-radius: 6px; padding: 14px 20px; background-color: #f9fbfe; box-shadow: 1px 1px 4px #dfeaf5;">
+  <div style="width: 100px; height: 100px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: #fff; border: 1px solid #e0eaf5; border-radius: 6px; overflow: hidden; margin-right: 32px;">
+    <img src="{thumbnail}" alt="Notebook Thumbnail" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+  </div>
+  <div style="flex: 1;">
+    <strong>{title}</strong><br>
+{subtitle_html}    <div style="margin: 6px 0;">
+      {tags_html}
+    </div>
+    <a href="{href}" style="text-decoration: none; color: #1d70b8; font-weight: bold;">View Notebook</a>
+  </div>
+</div>'''
+
+
+def wrap_notebook_cards(cards_html):
+    """Wrap a list of notebook-card HTML strings in a flex column container."""
+    joined = "\n".join(cards_html)
+    return f'<div style="display: flex; flex-direction: column; gap: 20px; max-width: 900px; margin-bottom: 40px;">\n{joined}\n</div>'
+
+
 def generate_gallery_pages(notebook_tags, output_dir="notebooks"):
     """Generate MyST gallery pages with enhanced styling"""
 
@@ -342,8 +400,21 @@ Click on the category to explore the corresponding notebooks!
 
 """)
 
+    def _cards_for_tag(tag):
+        """Return sorted notebook-card HTML strings for notebooks matching a tag."""
+        matched = [
+            (path, meta)
+            for path, meta in notebook_tags.items()
+            if tag in meta.get("tags", [])
+        ]
+        matched.sort(key=lambda x: x[1].get("title", "").lower())
+        return [generate_notebook_card_html(path, meta) for path, meta in matched]
+
     # Generate Sentinel category page
     with open(categories["sentinel"]["file"], "w") as f:
+        s1_cards = wrap_notebook_cards(_cards_for_tag("sentinel-1"))
+        s2_cards = wrap_notebook_cards(_cards_for_tag("sentinel-2"))
+        s3_cards = wrap_notebook_cards(_cards_for_tag("sentinel-3"))
         f.write(f"""---
 title: {categories["sentinel"]["title"]}
 ---
@@ -358,29 +429,24 @@ title: {categories["sentinel"]["title"]}
 
 ## Sentinel-1
 
-```{{gallery-grid}}
-:category: sentinel-1
-:columns: 1 1 2 3
-```
+{s1_cards}
 
 ## Sentinel-2
 
-```{{gallery-grid}}
-:category: sentinel-2
-:columns: 1 1 2 3
-```
+{s2_cards}
 
 ## Sentinel-3
 
-```{{gallery-grid}}
-:category: sentinel-3
-:columns: 1 1 2 3
-```
+{s3_cards}
 
 """)
 
     # Generate Topics category page
     with open(categories["topics"]["file"], "w") as f:
+        land_cards = wrap_notebook_cards(_cards_for_tag("land"))
+        climate_cards = wrap_notebook_cards(_cards_for_tag("climate-change"))
+        marine_cards = wrap_notebook_cards(_cards_for_tag("marine"))
+        security_cards = wrap_notebook_cards(_cards_for_tag("security"))
         f.write(f"""---
 title: {categories["topics"]["title"]}
 ---
@@ -392,41 +458,33 @@ title: {categories["topics"]["title"]}
 <a class="link" href="gallery-topics#marine-applications" ><p style="background-color:white;"><span class="gallery-tag tag-marine">🌊 marine</span></p></a>
 <a class="link" href="gallery-topics#emergency-and-security-applications" ><p style="background-color:white;"><span class="gallery-tag tag-security">🔒 security</span></p></a>
 
-
 {categories["topics"]["description"]}
 
 ## Land Applications
 
-```{{gallery-grid}}
-:category: land
-:columns: 1 1 2 3
-```
+{land_cards}
 
 ## Climate Monitoring
 
-```{{gallery-grid}}
-:category: climate-change
-:columns: 1 1 2 3
-```
+{climate_cards}
 
 ## Marine Applications
 
-```{{gallery-grid}}
-:category: marine
-:columns: 1 1 2 3
-```
+{marine_cards}
 
 ## Emergency and Security Applications
 
-```{{gallery-grid}}
-:category: security
-:columns: 1 1 2 3
-```
+{security_cards}
 
 """)
 
     # Generate Tools category page
     with open(categories["tools"]["file"], "w") as f:
+        xarray_cards = wrap_notebook_cards(_cards_for_tag("xarray"))
+        xarray_eopf_cards = wrap_notebook_cards(_cards_for_tag("xarray-eopf"))
+        xcube_cards = wrap_notebook_cards(_cards_for_tag("xcube"))
+        gdal_cards = wrap_notebook_cards(_cards_for_tag("gdal"))
+        stac_cards = wrap_notebook_cards(_cards_for_tag("stac"))
         f.write(f"""---
 title: {categories["tools"]["title"]}
 ---
@@ -442,43 +500,30 @@ title: {categories["tools"]["title"]}
 
 ## Xarray
 
-```{{gallery-grid}}
-:category: xarray
-:columns: 1 1 2 3
-```
+{xarray_cards}
 
 ## xarray-eopf plugin
 
-```{{gallery-grid}}
-:category: xarray-eopf
-:columns: 1 1 2 3
-```
+{xarray_eopf_cards}
 
 ## xcube-eopf plugin
 
-```{{gallery-grid}}
-:category: xcube
-:columns: 1 1 2 3
-```
+{xcube_cards}
 
 ## GDAL
 
-```{{gallery-grid}}
-:category: gdal
-:columns: 1 1 2 3
-```
+{gdal_cards}
 
 ## STAC
 
-```{{gallery-grid}}
-:category: stac
-:columns: 1 1 2 3
-```
+{stac_cards}
 
 """)
 
     # Generate Tutorials category page
     with open(categories["tutorials"]["file"], "w") as f:
+        dask_cards = wrap_notebook_cards(_cards_for_tag("dask"))
+        basic_cards = wrap_notebook_cards(_cards_for_tag("basic"))
         f.write(f"""---
 title: {categories["tutorials"]["title"]}
 ---
@@ -492,19 +537,13 @@ title: {categories["tutorials"]["title"]}
 
 ## Dask
 
-```{{gallery-grid}}
-:category: dask
-:columns: 1 1 2 3
-```
+{dask_cards}
 
 ## Basic Data Access
 
-```{{gallery-grid}}
-:category: basic
-:columns: 1 1 2 3
-```
+{basic_cards}
 
-        """)
+""")
 
 
 def analyze_notebook_content(notebook_tags):
@@ -562,6 +601,7 @@ def analyze_notebooks(root_dir="notebooks"):
                 "title": title,
                 "description": notebook_data["explicit_description"] or "",
                 "tags": tags,
+                "thumbnail": notebook_data["explicit_thumbnail"] or "",
                 "full_path": str(file_path),
                 "folder": (
                     str(file_path.parent.relative_to(root_dir))
@@ -593,6 +633,7 @@ def export_metadata_for_plugin(notebook_tags, output_dir="notebooks"):
             "title": meta["title"],
             "description": meta.get("description", ""),
             "tags": meta["tags"],
+            "thumbnail": meta.get("thumbnail", ""),
             "has_explicit_tags": meta.get("has_explicit_tags", False),
             "folder": meta["folder"],
         }
