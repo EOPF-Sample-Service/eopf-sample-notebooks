@@ -172,6 +172,12 @@ const plugin = {
               description:
                 "Notebooks demonstrating XArray, GDAL, XCube, Zarr, and more",
             },
+            {
+              title: "🔧 Tutorials",
+              link: "gallery-tutorials",
+              description:
+                "Notebooks demonstrating the main workflows for accessing and working with the data.",
+            },
           ];
 
           const cards = categories.map((cat) => ({
@@ -304,6 +310,8 @@ function getTagIcon(tag) {
     gdal: "🗺️",
     stac: "📋",
     zarr: "📦",
+    dask: "🧮",
+    basic: "👶",
   };
   return icons[tag] || "🏷️";
 }

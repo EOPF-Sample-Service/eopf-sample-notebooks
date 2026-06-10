@@ -16,12 +16,12 @@ project:
           ror: https://ror.org/03wd9za21
   github: https://github.com/EOPF-Sample-Service/eopf-sample-notebooks
   banner: notebooks/static/ESA_footer_banner_transparent.png
-  thumbnail: notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
+  thumbnail: notebooks/static/EOPF-on-bright-baseline.png
   open_access: true
   license:
     content: CC-BY-4.0
     code: Apache-2.0
-  copyright: "2025"
+  copyright: "2026"
   toc:
     # Main navigation
     - file: notebooks/README.md
@@ -37,10 +37,15 @@ project:
         - file: notebooks/Sentinel-2/eopf_openeo_stac.ipynb
         - file: notebooks/Sentinel-3/Regridding_Sentinel_3_SLSTR_LST.ipynb
         - file: notebooks/Sentinel-3/Sentinel-3_Heatwave_Mapping.ipynb
-        - file: notebooks/xarray_eopf_plugin/xarray_eopf_sen2.ipynb
-        - file: notebooks/xarray_eopf_plugin/xarray_eopf_sen3.ipynb
-        - file: notebooks/xcube_eopf_plugin/xcube_eopf_sen2.ipynb
-        - file: notebooks/xcube_eopf_plugin/xcube_eopf_sen3.ipynb
+        - file: notebooks/xarray_eopf_plugin/introduction.ipynb
+        - file: notebooks/xarray_eopf_plugin/sentinel_1_native.ipynb
+        - file: notebooks/xarray_eopf_plugin/sentinel_2_analysis.ipynb
+        - file: notebooks/xarray_eopf_plugin/sentinel_2_native.ipynb
+        - file: notebooks/xarray_eopf_plugin/sentinel_3_analysis.ipynb
+        - file: notebooks/xarray_eopf_plugin/sentinel_3_native.ipynb
+        - file: notebooks/xcube_eopf_plugin/introduction.ipynb
+        - file: notebooks/xcube_eopf_plugin/sentinel_2.ipynb
+        - file: notebooks/xcube_eopf_plugin/sentinel_3.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L1_SLC_Zarr_product_exploration.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L2_OCN_Zarr_product_exploration.ipynb
@@ -67,19 +72,23 @@ project:
         - file: notebooks/Sentinel-1/Sentinel-1_Soil_moisture.ipynb
         - file: notebooks/julia_eopf_plugin/julia_eopf_sen2.ipynb
         - file: notebooks/julia_eopf_plugin/julia_eopf_sen3.ipynb
+        - file: notebooks/Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo.ipynb
+        - file: notebooks/Sentinel-1/GDAL_Sentinel-1_SLC_Burst_Selection.ipynb
+        - file: notebooks/Sentinel-1/GDAL_Sentinel-1_GCP_Geolocation.ipynb
+        - file: notebooks/Sentinel-2/SL2P_LAI_retrieval.ipynb
 
     # Gallery categories (visible in navigation)
-    - file: notebooks/gallery-tutorials.md
     - file: notebooks/gallery-sentinel.md
     - file: notebooks/gallery-topics.md
     - file: notebooks/gallery-tools.md
+    - file: notebooks/gallery-tutorials.md
   subject: earth and related environmental sciences
 
 site:
   template: book-theme
   options:
-    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/main/notebooks/static/ESA_EOPF_logo_2025_COLOR_ESA_blue_reduced.png
-    logo_text: EOPF Sample Service
+    logo: https://raw.githubusercontent.com/EOPF-Sample-Service/eopf-sample-notebooks/refs/heads/dev/notebooks/static/EOPF-on-bright-baseline.png
+    logo_text: EOPF Sentinel Zarr Samples
     style: ./notebooks/static/gallery.css
   actions:
     - title: Learn More
