@@ -70,7 +70,7 @@ const plugin = {
           jupyterHubUrl =
             "https://jupyterhub.user.eopf.eodc.eu/hub/login?next=" +
             encodeURIComponent(spawn_next) +
-            "%23fancy-forms-config=%7B%22profile%22%3A%22choose-your-environment%22%2C%22image%22%3A%22unlisted_choice%22%2C%22image%3Aunlisted_choice%22%3A%22yuvraj1989%2Feopf-zarr-driver%3A4.1%22%2C%20%22autoStart%22%3A%22true%22%7D";
+            "%23fancy-forms-config=%7B%22profile%22%3A%22choose-your-environment%22%2C%22image%22%3A%22unlisted_choice%22%2C%22image%3Aunlisted_choice%22%3A%22yuvraj1989%2Feopf-zarr-driver%3Asha-6d70fdf%22%2C%20%22autoStart%22%3A%22true%22%7D";
         } else {
           jupyterHubUrl =
             "https://jupyterhub.user.eopf.eodc.eu/hub/login?next=" +
