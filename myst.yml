@@ -70,6 +70,8 @@ project:
         - file: notebooks/performance/sentinel_performance_zarr_safe_direct.ipynb
         - file: notebooks/performance/sentinel_performance_zarr_safe_xcube.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_Soil_moisture.ipynb
+        - file: notebooks/julia_eopf_plugin/julia_eopf_sen2.ipynb
+        - file: notebooks/julia_eopf_plugin/julia_eopf_sen3.ipynb
         - file: notebooks/Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo.ipynb
         - file: notebooks/Sentinel-1/GDAL_Sentinel-1_SLC_Burst_Selection.ipynb
         - file: notebooks/Sentinel-1/GDAL_Sentinel-1_GRD_GCP_Geolocation.ipynb
