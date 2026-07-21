@@ -74,7 +74,8 @@ project:
         - file: notebooks/julia_eopf_plugin/julia_eopf_sen3.ipynb
         - file: notebooks/Sentinel-3/GDAL_Sentinel-3_Multi-Product-Demo.ipynb
         - file: notebooks/Sentinel-1/GDAL_Sentinel-1_SLC_Burst_Selection.ipynb
-        - file: notebooks/Sentinel-1/GDAL_Sentinel-1_GCP_Geolocation.ipynb
+        - file: notebooks/Sentinel-1/GDAL_Sentinel-1_GRD_GCP_Geolocation.ipynb
+        - file: notebooks/Sentinel-1/GDAL_Sentinel-1_SLC_GCP_Geolocation.ipynb
         - file: notebooks/Sentinel-2/SL2P_LAI_retrieval.ipynb
 
     # Gallery categories (visible in navigation)
