@@ -3,9 +3,9 @@ channels:
   - conda-forge
 dependencies:
   - python=3.11
-  - xarray
-  - xarray-eopf>=0.2.7
-  - xcube-eopf>=0.3.1
+  - xarray>=2025.3.0
+  - xarray-eopf>=0.3.0
+  - xcube-eopf>=0.3.4
   - xcube-stac
   - folium
   - graphviz
@@ -37,5 +37,5 @@ dependencies:
   - hvplot
   - bokeh
   - holoviews
-  - openeo>=0.44.0
+  #  - openeo>=0.44.0
   - pip
