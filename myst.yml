@@ -39,11 +39,13 @@ project:
         - file: notebooks/Sentinel-3/Sentinel-3_Heatwave_Mapping.ipynb
         - file: notebooks/xarray_eopf_plugin/introduction.ipynb
         - file: notebooks/xarray_eopf_plugin/sentinel_1_native.ipynb
+        - file: notebooks/xarray_eopf_plugin/sentinel_1_analysis.ipynb
         - file: notebooks/xarray_eopf_plugin/sentinel_2_analysis.ipynb
         - file: notebooks/xarray_eopf_plugin/sentinel_2_native.ipynb
         - file: notebooks/xarray_eopf_plugin/sentinel_3_analysis.ipynb
         - file: notebooks/xarray_eopf_plugin/sentinel_3_native.ipynb
         - file: notebooks/xcube_eopf_plugin/introduction.ipynb
+        - file: notebooks/xcube_eopf_plugin/sentinel_1.ipynb
         - file: notebooks/xcube_eopf_plugin/sentinel_2.ipynb
         - file: notebooks/xcube_eopf_plugin/sentinel_3.ipynb
         - file: notebooks/Sentinel-1/Sentinel-1_L1_GRD_Zarr_product_exploration.ipynb
