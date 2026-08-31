@@ -28,7 +28,7 @@ exclude: "generate_gallery.py"
 repos:
   # Autoformat and lint Python code (exclude notebooks from ruff-format)
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.7
+    rev: v0.16.5
     hooks:
       - id: ruff
         types_or: [python, jupyter]
@@ -54,14 +54,14 @@ repos:
 
   # Black for Python files
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.3.1
+    rev: 26.5.1
     hooks:
       - id: black
         types: [python]
 
   # Black for Jupyter notebooks
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.3.1
+    rev: 26.5.1
     hooks:
       - id: black-jupyter
         types: [jupyter]
