@@ -1,14 +1,15 @@
-import numpy
 import os
 import re
-import rasterio
+import shutil
 import xml.etree.ElementTree as ET
-from tqdm import tqdm
 import zipfile
+
+import numpy
+import rasterio
 import scipy.ndimage
 from scipy.interpolate import RegularGridInterpolator
 from scipy.spatial import cKDTree
-import shutil
+from tqdm import tqdm
 
 
 # read Sentinel-2 image in SAFE format and return it as a dictionarry
