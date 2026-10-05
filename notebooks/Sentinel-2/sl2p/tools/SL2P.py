@@ -1,13 +1,12 @@
-from tools import toolsNets
-from tools import dictionariesSL2P
-from tools import SL2PV0 as algorithm
-
-# from tools import read_sentinel2_safe_image
-from tools.xarray_utils import dict_to_dataset, varmap_to_dataset, xr
+from datetime import datetime
 
 import numpy
 import pandas as pd
-from datetime import datetime
+from tools import SL2PV0 as algorithm
+from tools import dictionariesSL2P, toolsNets
+
+# from tools import read_sentinel2_safe_image
+from tools.xarray_utils import dict_to_dataset, varmap_to_dataset, xr
 
 
 # Main SL2P function
@@ -226,7 +225,7 @@ def prepare_sl2p_inp(
             sl2p_inp[band][sl2p_inp[band] < 0] = numpy.nan
 
     # ---- (6) Stack to (bands, H, W)
-    sl2p_inp = numpy.stack([sl2p_inp[k] for k in sl2p_inp.keys()])
+    sl2p_inp = numpy.stack([sl2p_inp[k] for k in sl2p_inp])
     print("Done!")
     return sl2p_inp
 

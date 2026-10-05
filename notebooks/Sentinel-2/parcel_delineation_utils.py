@@ -1,7 +1,12 @@
+import gc
 import sys
-from typing import Dict
+from functools import lru_cache
+from random import sample, seed
+from typing import Dict, Tuple
 
 import dask.array as da
+import numpy as np
+import onnxruntime as ort
 import xarray as xr
 from dask.base import compute
 from dask.delayed import delayed
@@ -9,14 +14,6 @@ from dask.diagnostics.progress import ProgressBar
 from skimage import graph, segmentation
 from skimage.filters import sobel
 from xarray import DataArray
-
-import gc
-from functools import lru_cache
-from random import sample, seed
-from typing import Tuple
-
-import numpy as np
-import onnxruntime as ort
 
 sys.path.insert(1, "onnx_deps")
 
@@ -38,7 +35,7 @@ def inspect(message):
 
 def preprocess_datacube(
     cubearray: xr.DataArray, min_images: int
-) -> Tuple[bool, xr.DataArray]:
+) -> tuple[bool, xr.DataArray]:
     # If 'bands' dimension exists, select the first band; otherwise, use the array as is
     if "bands" in cubearray.dims:
         nvdi_stack = cubearray.isel(bands=0)
@@ -239,7 +236,7 @@ def apply_segmentation_parallel(ndvi: xr.DataArray) -> xr.DataArray:
     return merged
 
 
-def apply_filter(cube: DataArray, context: Dict) -> DataArray:
+def apply_filter(cube: DataArray, context: dict) -> DataArray:
     inspect(message=f"Dimensions of the final datacube {cube.dims}")
     # get the underlying array without the bands and t dimension
     image_data = cube.squeeze("time", drop=True).values
