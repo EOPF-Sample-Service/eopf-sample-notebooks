@@ -460,8 +460,8 @@ def infer_profile(ds: xr.Dataset, ref_band: str, required_inputs: list) -> dict:
 
 def clip_cube_to_aoi(ds: xr.Dataset, ref_band: str, aoi_path: str, required_inputs):
     """Clip an already aligned xarray cube using the raster profile inferred from the reference band."""
-    ds_for_clip = ds.copy()
-    ds_for_clip.attrs["profile"] = infer_profile(ds_for_clip, ref_band, required_inputs)
+    ds_for_clip = ds.copy().drop("spatial_ref")
+    ds_for_clip.attrs["profile"] = infer_profile(ds, ref_band, required_inputs)
     clipped = clip_dataset(ds_for_clip, aoi_path)
     clipped_profile = dict(clipped.attrs.get("profile", {}))
     if not clipped_profile:
