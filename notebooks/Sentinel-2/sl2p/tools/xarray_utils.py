@@ -9,21 +9,22 @@ Lightweight helpers for working with xarray-style objects inside the SL2P pipeli
 
 from __future__ import annotations
 
+import gc
 import os
-import types
 import re
 import time
-import gc
-from typing import Dict, Iterable, List, Sequence, Tuple
+import types
+from collections.abc import Iterable, Sequence
+from typing import Dict, List, Tuple
 
+import fiona
 import numpy as np
 import rasterio
-from rasterio.transform import Affine
-from scipy import ndimage
 from rasterio.io import MemoryFile
 from rasterio.mask import mask as rio_mask
+from rasterio.transform import Affine
 from rasterio.warp import transform_geom
-import fiona
+from scipy import ndimage
 
 try:  # pragma: no cover - optional dependency
     import xarray as xr  # type: ignore
@@ -111,7 +112,7 @@ except ImportError:  # pragma: no cover - fallback stub
 
     class Dataset:
         def __init__(
-            self, data_vars: Dict[str, DataArray] | None = None, coords=None, attrs=None
+            self, data_vars: dict[str, DataArray] | None = None, coords=None, attrs=None
         ):
             self.data_vars = data_vars or {}
             self.coords = coords or {}
@@ -131,7 +132,7 @@ except ImportError:  # pragma: no cover - fallback stub
 
         @property
         def dims(self):
-            dims: Dict[str, int] = {}
+            dims: dict[str, int] = {}
             for da in self.data_vars.values():
                 for dim, size in zip(da.dims, da.shape):
                     dims[dim] = size
@@ -143,12 +144,12 @@ except ImportError:  # pragma: no cover - fallback stub
 ArrayLike = np.ndarray
 
 
-def _coords_from_shape(shape: Tuple[int, int], dims: Sequence[str]):
+def _coords_from_shape(shape: tuple[int, int], dims: Sequence[str]):
     ydim, xdim = dims
     return {ydim: np.arange(shape[0]), xdim: np.arange(shape[1])}
 
 
-def dict_to_dataset(s2_dict: Dict, dims: Tuple[str, str] = ("y", "x")):
+def dict_to_dataset(s2_dict: dict, dims: tuple[str, str] = ("y", "x")):
 
     profile = dict(s2_dict.get("profile", {}))
 
@@ -193,8 +194,8 @@ def merge_datasets(base_ds, extra_ds):
 def stack_dataset(ds, band_names: Iterable[str] | None = None):
     """Stack Dataset variables into a 3D numpy array (band, y, x)."""
     names = list(band_names) if band_names is not None else list(ds.data_vars.keys())
-    arrays: List[np.ndarray] = []
-    dims: Tuple[str, str] | None = None
+    arrays: list[np.ndarray] = []
+    dims: tuple[str, str] | None = None
     for name in names:
         da = ds[name]
         arr = np.asarray(getattr(da, "values", da))
@@ -236,33 +237,32 @@ def clip_dataset(
         }
     )
 
-    with MemoryFile() as memfile:
-        with memfile.open(**mem_profile) as src:
-            src.write(stack)
-            dst_crs = src.crs
-            geoms_dst = (
-                [
-                    transform_geom(shp_crs, dst_crs.to_string(), g, precision=6)
-                    for g in shapes
-                ]
-                if shp_crs and dst_crs
-                else shapes
-            )
+    with MemoryFile() as memfile, memfile.open(**mem_profile) as src:
+        src.write(stack)
+        dst_crs = src.crs
+        geoms_dst = (
+            [
+                transform_geom(shp_crs, dst_crs.to_string(), g, precision=6)
+                for g in shapes
+            ]
+            if shp_crs and dst_crs
+            else shapes
+        )
 
-            out_img, out_transform = rio_mask(
-                src,
-                geoms_dst,
-                crop=crop,
-                all_touched=all_touched,
-                nodata=nodata,
-            )
-            out_profile = src.profile.copy()
-            out_profile.update(
-                height=out_img.shape[1],
-                width=out_img.shape[2],
-                transform=out_transform,
-                nodata=nodata,
-            )
+        out_img, out_transform = rio_mask(
+            src,
+            geoms_dst,
+            crop=crop,
+            all_touched=all_touched,
+            nodata=nodata,
+        )
+        out_profile = src.profile.copy()
+        out_profile.update(
+            height=out_img.shape[1],
+            width=out_img.shape[2],
+            transform=out_transform,
+            nodata=nodata,
+        )
 
     coords = _coords_from_shape(out_img.shape[1:], dims)
     data_vars = {
@@ -323,7 +323,7 @@ def coords_from_template(template, profile=None):
     return dims, coords
 
 
-def varmap_to_dataset(varmap_dict: Dict[str, ArrayLike], template=None, profile=None):
+def varmap_to_dataset(varmap_dict: dict[str, ArrayLike], template=None, profile=None):
     """Wrap model outputs (numpy arrays) into a Dataset aligned to a template."""
     dims, coords = coords_from_template(template, profile)
     data_vars = {
@@ -337,7 +337,7 @@ def varmap_to_dataset(varmap_dict: Dict[str, ArrayLike], template=None, profile=
 
 
 def write_varmap_geotiff(
-    varmap, output_path: str, profile: Dict, band_order: Sequence[str]
+    varmap, output_path: str, profile: dict, band_order: Sequence[str]
 ):
     """Write a varmap Dataset/dict to GeoTIFF following the provided band order."""
     profile = dict(profile)
@@ -469,7 +469,7 @@ def clip_cube_to_aoi(ds: xr.Dataset, ref_band: str, aoi_path: str, required_inpu
     return clipped, clipped_profile
 
 
-def _resample_to_ref(arr: np.ndarray, target_shape: Tuple[int, int]) -> np.ndarray:
+def _resample_to_ref(arr: np.ndarray, target_shape: tuple[int, int]) -> np.ndarray:
     if arr.shape == target_shape:
         return arr
     fy = target_shape[0] / arr.shape[0]
@@ -479,7 +479,7 @@ def _resample_to_ref(arr: np.ndarray, target_shape: Tuple[int, int]) -> np.ndarr
 
 def build_sl2p_input(
     ds: xr.Dataset, net_opts: dict, PRESCALED_INPUT
-) -> Tuple[np.ndarray, Tuple[str, str]]:
+) -> tuple[np.ndarray, tuple[str, str]]:
     missing = [b for b in net_opts["inputBands"] if b not in ds]
     if missing:
         raise ValueError(f"Dataset missing required variables: {missing}")
