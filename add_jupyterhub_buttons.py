@@ -5,6 +5,7 @@ Inject JupyterHub button directive into notebooks
 
 import argparse
 from pathlib import Path
+
 import nbformat
 
 
